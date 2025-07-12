@@ -1,0 +1,49 @@
+services:
+  main-db:
+    image: postgres:17
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${MAIN_DATABASE_USER}
+      POSTGRES_PASSWORD: ${MAIN_DATABASE_PASSWORD}
+      POSTGRES_DB: ${MAIN_DATABASE_NAME}
+    volumes:
+      - main-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${MAIN_DATABASE_USER} -d ${MAIN_DATABASE_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  analytic-db:
+    image: postgres:17
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: ${ANALYTIC_DATABASE_USER}
+      POSTGRES_PASSWORD: ${ANALYTIC_DATABASE_PASSWORD}
+      POSTGRES_DB: ${ANALYTIC_DATABASE_NAME}
+    volumes:
+      - analytic-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${ANALYTIC_DATABASE_USER} -d ${ANALYTIC_DATABASE_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5  
+
+  redis:
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  main-db-data:
+  analytic-db-data:
+  redis-data:
