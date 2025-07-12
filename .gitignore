@@ -1,0 +1,52 @@
+# macOS
+.DS_Store
+
+# Environments
+.env
+.env.dev
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.idea/
+.spyderproject
+.spyproject
+.ropeproject
+
+# Jupyter / IPython
+.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# PyCharm / JetBrains
+# (отдельный шаблон можно подключать отдельно глобально, но если нужно — оставить это)
+# .idea/
+
+# Общие кэш и временные файлы
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.pytest_cache/
+.cache
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.tox/
+.nox/
+.hypothesis/
+
+# Документация
+/site
+docs/_build/
