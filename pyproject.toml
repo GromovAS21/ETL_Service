@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "german-etl"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Glavan <pglavan1998@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pydantic-settings = "==2.10.1"
+psycopg = "==3.2.9"
+redis = "==6.2.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.3"
+mypy = "^1.16.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+plugins = ['pydantic.mypy']
+
+[tool.ruff]
+line-length = 120
