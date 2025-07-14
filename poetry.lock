@@ -16,9 +16,10 @@ files = [
 name = "mypy"
 version = "1.16.1"
 description = "Optional static typing for Python"
-optional = false
+optional = true
 python-versions = ">=3.9"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "mypy-1.16.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:b4f0fed1022a63c6fec38f28b7fc77fca47fd490445c69d0a66266c59dd0b88a"},
     {file = "mypy-1.16.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:86042bbf9f5a05ea000d3203cf87aa9d0ccf9a01f73f71c58979eb9249f46d72"},
@@ -70,9 +71,10 @@ reports = ["lxml"]
 name = "mypy-extensions"
 version = "1.1.0"
 description = "Type system extensions for programs checked with the mypy type checker."
-optional = false
+optional = true
 python-versions = ">=3.8"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "mypy_extensions-1.1.0-py3-none-any.whl", hash = "sha256:1be4cccdb0f2482337c4743e60421de3a356cd97508abadd57d47403e94f5505"},
     {file = "mypy_extensions-1.1.0.tar.gz", hash = "sha256:52e68efc3284861e772bbcd66823fde5ae21fd2fdb51c62a211403730b916558"},
@@ -82,9 +84,10 @@ files = [
 name = "pathspec"
 version = "0.12.1"
 description = "Utility library for gitignore style pattern matching of file paths."
-optional = false
+optional = true
 python-versions = ">=3.8"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "pathspec-0.12.1-py3-none-any.whl", hash = "sha256:a0d503e138a4c123b27490a4f7beda6a01c6f288df0e4a8b79c7eb0dc7b4cc08"},
     {file = "pathspec-0.12.1.tar.gz", hash = "sha256:a482d51503a1ab33b1c67a6c3813a26953dbdc71c31dacaef9a838c4e29f5712"},
@@ -308,9 +311,10 @@ ocsp = ["cryptography (>=36.0.1)", "pyopenssl (>=20.0.1)", "requests (>=2.31.0)"
 name = "ruff"
 version = "0.12.3"
 description = "An extremely fast Python linter and code formatter, written in Rust."
-optional = false
+optional = true
 python-versions = ">=3.7"
-groups = ["dev"]
+groups = ["main"]
+markers = "extra == \"dev\""
 files = [
     {file = "ruff-0.12.3-py3-none-linux_armv6l.whl", hash = "sha256:47552138f7206454eaf0c4fe827e546e9ddac62c2a3d2585ca54d29a890137a2"},
     {file = "ruff-0.12.3-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:0a9153b000c6fe169bb307f5bd1b691221c4286c133407b8827c406a55282041"},
@@ -338,7 +342,7 @@ version = "4.14.1"
 description = "Backported and Experimental Type Hints for Python 3.9+"
 optional = false
 python-versions = ">=3.9"
-groups = ["main", "dev"]
+groups = ["main"]
 files = [
     {file = "typing_extensions-4.14.1-py3-none-any.whl", hash = "sha256:d1e1e3b58374dc93031d6eda2420a48ea44a36c2b4766a4fdeb3710755731d76"},
     {file = "typing_extensions-4.14.1.tar.gz", hash = "sha256:38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36"},
@@ -372,7 +376,10 @@ files = [
     {file = "tzdata-2025.2.tar.gz", hash = "sha256:b60a638fcc0daffadf82fe0f57e53d06bdec2f36c4df66280ae79bce6bd6f2b9"},
 ]
 
+[extras]
+dev = ["mypy", "ruff"]
+
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "f945e75f9118d675d4a5426f143a8a8f4d54654fb80938c5bbe6d3d8891d69cc"
+content-hash = "d57dfc408d7db6dc95a7434f0198351400f170d148ae605eadceac1f02347292"
