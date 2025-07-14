@@ -1,4 +1,3 @@
-
 from src.connections import get_main_db_cursor, get_analytic_db_cursor, get_redis_connection
 from src.logs import logger
 
