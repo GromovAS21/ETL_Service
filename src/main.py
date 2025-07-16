@@ -1,7 +1,7 @@
 import time
 
-from src.services import load_jobs, process_job
 from src.logs import logger
+from src.services import load_jobs, process_job
 
 
 def main(interval_seconds: int = 300) -> None:
@@ -16,8 +16,8 @@ def main(interval_seconds: int = 300) -> None:
                 for job in jobs:
                     process_job(job)
             logger.info("Цикл ETL завершен.")
-        except Exception as e:
-            logger.critical(f"Критическая ошибка в ETL-цикле: {e}", exc_info=True)
+        except Exception:
+            logger.exception("Критическая ошибка в ETL-цикле")
         time.sleep(interval_seconds)
 
 
