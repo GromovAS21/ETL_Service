@@ -20,7 +20,7 @@
 
 ## Как это работает
 
-1. Аналитик добавляет файл в папку `/jobs`. В нем:
+1. Аналитик добавляет файл в папку `/jobs`. Это должен быть JSON файл. В нем:
     
     - `CREATE_TABLE_SQL`: сырой SQL-запрос на создание таблицы
         
@@ -53,3 +53,32 @@
 
 - Ошибки в `.log`-fайлы.
 - Логирование критичных случаев.
+___
+
+### Правило написания запросов
+
+1. Для **CREATE_TABLE_SQL**
+
+- Запрос на создание таблицы необходимо начинать с `CREATE TABLE IF NOT EXISTS ` - это нужно для того чтобы не было конфликта при новом цикле работы приложения'. 
+
+2. Для **SELECT_SOURCE_SQL**
+
+- В конце SELECT запроса должно быть обязательно условие с placeholder\`ом (пример: `WHERE updated_at > %s`) для сравнения поля обновления с последней датой работы ETL процесса (храниться в хэше). Выгружает данные которые были обновлены или добавлены после последней даты работы ETL процесса. 
+
+3. Для UPSERT_TARGET_SQL
+
+- Запрос INSERT должен иметь `ON CONFLICT (col_name) DO UPDATE SET col_name_1 = EXCLUDED.title` - если объект существует то он обновляется, если нет то создается. 
+- Запрос должен перечислять все поля объекта
+- Внутри оператора VALUES должно быть равное колонкам объекта количество placeholder
+
+_Пример: INSERT INTO products (product_id, title, created_at, updated_at) VALUES (%s, %s, %s, %s) ON CONFLICT (product_id) DO UPDATE SET title = EXCLUDED.title, created_at = EXCLUDED.created_at, updated_at = EXCLUDED.updated_at;_
+
+4. Для SELECT_KEYS_SQL и KEY_COLUMNS
+
+- В `KEY_COLUMNS` хранится список с названиями полей по которым будет производиться удаление. Может быть одно может быть несколько.
+- В `SELECT_KEYS_SQL` должен быть SELECT запрос на получения всех объектов из основной таблицы
+- В `SELECT_KEYS_SQL` запрос должен быть на колонки которые прописаны в `KEY_COLUMNS`. Количество и названия и порядок их прописывания должен быть одинаковый. 
+
+_Пример:_
+- SELECT_KEYS_SQL = "SELECT title, category FROM products;"
+- KEY_COLUMNS = ["title", "category"]
