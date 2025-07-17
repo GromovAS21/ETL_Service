@@ -82,3 +82,24 @@ _Пример: INSERT INTO products (product_id, title, created_at, updated_at) 
 _Пример:_
 - SELECT_KEYS_SQL = "SELECT title, category FROM products;"
 - KEY_COLUMNS = ["title", "category"]
+
+
+Тестовые примеры данных в файле:
+
+{
+  "CREATE_TABLE_SQL": "CREATE TABLE IF NOT EXISTS users (id INT PRIMARY KEY, name VARCHAR, email VARCHAR, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);",
+  "SELECT_SOURCE_SQL": "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;",
+  "UPSERT_TARGET_SQL": "INSERT INTO users (id, name, email, created_at, updated_at) VALUES (%s, %s, %s, %s, %s) ON CONFLICT (id) DO UPDATE SET name = EXCLUDED.name, email = EXCLUDED.email, created_at = EXCLUDED.created_at, updated_at = EXCLUDED.updated_at;",
+  "SELECT_KEYS_SQL": "SELECT id FROM users;",
+  "TARGET_TABLE": "users",
+  "KEY_COLUMNS": ["id"]
+}
+
+{
+  "CREATE_TABLE_SQL": "CREATE TABLE IF NOT EXISTS products (product_id INT PRIMARY KEY, title VARCHAR NOT NULL, price DECIMAL(10,2), category VARCHAR, stock_quantity INT, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);",
+  "SELECT_SOURCE_SQL": "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;",
+  "UPSERT_TARGET_SQL": "INSERT INTO products (product_id, title, price, category, stock_quantity, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s) ON CONFLICT (product_id) DO UPDATE SET title = EXCLUDED.title, price = EXCLUDED.price, category = EXCLUDED.category, stock_quantity = EXCLUDED.stock_quantity, created_at = EXCLUDED.created_at, updated_at = EXCLUDED.updated_at;",
+  "SELECT_KEYS_SQL": "SELECT title, category FROM products;",
+  "TARGET_TABLE": "products",
+  "KEY_COLUMNS": ["title", "category"]
+  }

@@ -7,21 +7,13 @@ from typing import List
 
 from psycopg import Cursor, OperationalError, sql
 from psycopg.sql import Composed
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import ValidationError
 from redis import Redis
 
 from src.config import JOBS_DIR
 from src.connections import get_analytic_db_cursor, get_main_db_cursor, get_redis_connection
 from src.logs import logger
-
-
-class JobSchema(BaseModel):
-    create_table_query: str  = Field(validation_alias="CREATE_TABLE_SQL")
-    select_source_query: str = Field(validation_alias="SELECT_SOURCE_SQL")
-    upsert_target_query: str = Field(validation_alias="UPSERT_TARGET_SQL")
-    select_keys_query: str = Field(validation_alias="SELECT_KEYS_SQL")
-    target_table: str = Field(validation_alias="TARGET_TABLE")
-    key_columns: list[str] = Field(validation_alias="KEY_COLUMNS")
+from src.schema import JobSchema
 
 
 def load_jobs() -> list[Path]:
@@ -39,7 +31,11 @@ def read_job(job_path: Path) -> JobSchema:
         raise
 
 
-def extract_data(main_cursor: Cursor, query: str, hash_date: bytes | None,  batch_size: int = 50) -> Generator[list, None, None]:
+def extract_data(
+        main_cursor: Cursor,
+        query: str, hash_date: bytes | None,
+        batch_size: int = 50
+) -> Generator[list, None, None]:
     """
     Получение данных из основной базы данных.
     :return: генератор, которые возвращает данные в "чанках"
