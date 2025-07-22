@@ -3,8 +3,10 @@ import time
 from src.logs import logger
 from src.services import load_jobs, process_job
 
+from src.config import settings
 
-def main(interval_seconds: int = 300) -> None:
+
+def main(interval_seconds: int = settings.main_database.interval) -> None:
     """Основная функция программы."""
     logger.info("Запуск цикла ETL")
     while True:

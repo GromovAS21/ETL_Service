@@ -1,8 +1,45 @@
 services:
+  
+  etl-service:
+    build:
+      context: ./etl_service
+      dockerfile: Dockerfile
+    entrypoint: ["/etl.sh"]
+    environment:
+      MAIN_DB_USER: ${MAIN_DB_USER}
+      MAIN_DB_PASSWORD: ${MAIN_DB_PASSWORD}
+      MAIN_DB_DATABASE: ${MAIN_DB_DATABASE}
+      ANALYTIC_DB_USER: ${ANALYTIC_DB_USER}
+      ANALYTIC_DB_PASSWORD: ${ANALYTIC_DB_PASSWORD}
+      ANALYTIC_DB_DATABASE: ${ANALYTIC_DB_DATABASE}
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - main-db
+      - analytic-db
+      - redis
+
   main-db:
-    image: postgres:17
+    image: postgres:15
     ports:
-      - 5432:5432
+      - 5433:5432
+    command: >
+      bash -c "
+        if [ -z \"$(ls -A /var/lib/postgresql/data)\" ]; then
+          echo '🟡 Каталог пустой, запускаем pg_basebackup...';
+          until pg_basebackup -h host.docker.internal -U sht_user -D /var/lib/postgresql/data -Fp -Xs -P -R; do
+            echo 'Waiting for master...';
+            sleep 2;
+          done &&
+          echo '✅ Replica setup complete.' &&
+          chown -R postgres:postgres /var/lib/postgresql/data &&
+          chmod 700 /var/lib/postgresql/data
+        else
+          echo '🟢 Каталог уже инициализирован, пропускаем pg_basebackup.'
+        fi &&
+        exec su postgres -c 'postgres'
+      "
     environment:
       POSTGRES_USER: ${MAIN_DB_USER}
       POSTGRES_PASSWORD: ${MAIN_DB_PASSWORD}
@@ -18,9 +55,9 @@ services:
       retries: 5
 
   analytic-db:
-    image: postgres:17
+    image: postgres:15
     ports:
-      - 5433:5432
+      - 5434:5432
     environment:
       POSTGRES_USER: ${ANALYTIC_DB_USER}
       POSTGRES_PASSWORD: ${ANALYTIC_DB_PASSWORD}
@@ -37,8 +74,8 @@ services:
 
   redis:
     image: redis:latest
-    ports:
-      - 6379:6379
+    # ports:
+    #   - 6379:6379
     volumes:
       - redis-data:/data
     healthcheck:
@@ -47,7 +84,38 @@ services:
       timeout: 5s
       retries: 5
 
+
+  superset:
+    image: apache/superset:4.0.2
+    container_name: superset
+    restart: always
+    environment:
+      - SUPERSET_ENV=production
+      - DATABASE_URL=postgresql://superset:superset@superset_db/superset
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "8088:8088"
+    depends_on:
+      - redis
+      - superset_db
+    volumes:
+      - superset_home:/app/superset_home
+      - ./superset_config.py:/app/pythonpath/superset_config.py
+
+  superset_db:
+    image: postgres:15
+    container_name: superset_db
+    environment:
+      - POSTGRES_USER=superset
+      - POSTGRES_PASSWORD=superset
+      - POSTGRES_DB=superset
+    volumes:
+      - superset_data:/var/lib/postgresql/data
+    restart: always
+
 volumes:
   main-db-data:
   analytic-db-data:
   redis-data:
+  superset_data:
+  superset_home:

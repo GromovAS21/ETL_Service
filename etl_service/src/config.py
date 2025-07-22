@@ -12,11 +12,12 @@ JOBS_DIR = Path(__file__).parent.parent / "jobs"
 
 class MainDatabaseSettings(BaseSettings):
     """Настройки подключения к основной базе данных."""
+
     model_config = SettingsConfigDict(
         env_prefix="MAIN_DB_",
         env_file=(".env",),
         env_file_encoding="utf-8",
-        extra="ignore"
+        extra="ignore",
     )
 
     host: str = Field(...)
@@ -24,6 +25,7 @@ class MainDatabaseSettings(BaseSettings):
     user: str = Field(...)
     password: str = Field(...)
     database: str = Field(...)
+    interval: int = Field(default=300)
 
     @property
     def connection_url(self) -> str:
@@ -33,11 +35,12 @@ class MainDatabaseSettings(BaseSettings):
 
 class AnalyticDatabaseSettings(BaseSettings):
     """Настройки подключения к аналитической базе данных."""
+
     model_config = SettingsConfigDict(
         env_prefix="ANALYTIC_DB_",
         env_file=(".env",),
         env_file_encoding="utf-8",
-        extra="ignore"
+        extra="ignore",
     )
 
     host: str = Field(...)
@@ -54,11 +57,12 @@ class AnalyticDatabaseSettings(BaseSettings):
 
 class RedisConfig(BaseSettings):
     """Настройки подключения к Redis."""
+
     model_config = SettingsConfigDict(
         env_prefix="REDIS_",
         env_file=(".env",),
         env_file_encoding="utf-8",
-        extra="ignore"
+        extra="ignore",
     )
 
     host: str = Field(...)
@@ -79,12 +83,13 @@ class LogSettings(BaseSettings):
 
     base_dir: Path = Path(__file__).parent.parent
     level: int = logging.INFO
-    log_format: str = '%(asctime)s %(levelname)s %(message)s'
+    log_format: str = "%(asctime)s %(levelname)s %(message)s"
     file: Path = base_dir / "logs" / "app.log"
 
 
 class Settings(BaseSettings):
     """Настройки приложения."""
+
     main_database: MainDatabaseSettings = MainDatabaseSettings()
     analytic_database: AnalyticDatabaseSettings = AnalyticDatabaseSettings()
     redis: RedisConfig = RedisConfig()

@@ -1,0 +1,43 @@
+CREATE_TABLE_SQL: >
+  CREATE TABLE IF NOT EXISTS users_etl (
+    id INT PRIMARY KEY,
+    status VARCHAR,
+    title VARCHAR,
+    t VARCHAR,
+    name VARCHAR,
+    tg_id BIGINT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );
+
+SELECT_SOURCE_SQL: >
+  SELECT d.id,
+         d.status,
+         p.title,
+         g.title AS t,
+         u.name,
+         ctg.tg_id
+  FROM deals_deal as d
+  LEFT JOIN school_slotsgroup g ON d.slots_group_id = g.id
+  LEFT JOIN school_offers offer ON g.offer_id = offer.id
+  LEFT JOIN school_product as p ON offer.product_id = p.slug
+  LEFT JOIN users_client as u ON d.client_id = u.id
+  LEFT JOIN users_clientinnet as cin on u.client_in_net_id = cin.id
+  LEFT JOIN users_clientintg as ctg on cin.in_tg_id = ctg.tg_id
+  WHERE d.status = 'success' AND d.updated_at > %s;
+
+UPSERT_TARGET_SQL: >
+  INSERT INTO users_etl (
+    id, status, title, t, name, tg_id
+  ) VALUES (%s, %s, %s, %s, %s, %s)
+  ON CONFLICT (id) DO UPDATE SET
+    status = EXCLUDED.status,
+    title = EXCLUDED.title,
+    t = EXCLUDED.t,
+    name = EXCLUDED.name,
+    tg_id = EXCLUDED.tg_id;
+
+SELECT_KEYS_SQL: "SELECT id FROM deals_deal;"
+TARGET_TABLE: "users_etl"
+KEY_COLUMNS:
+  - id
