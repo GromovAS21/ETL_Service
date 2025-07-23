@@ -1,0 +1,2225 @@
+2025-07-14 17:49:22,772 INFO Обработка задания: test.json
+2025-07-14 17:49:22,947 ERROR Ошибка при выполнении задания test.json: connection failed: подключиться к серверу "127.0.0.1", порту 5432 не удалось: FATAL:  role "analitics_user" does not exist
+Multiple connection attempts failed. All failures were:
+- host: 'localhost', port: '5432', hostaddr: '::1': connection failed: подключиться к серверу "::1", порту 5432 не удалось: FATAL:  role "analitics_user" does not exist
+- host: 'localhost', port: '5432', hostaddr: '127.0.0.1': connection failed: подключиться к серверу "127.0.0.1", порту 5432 не удалось: FATAL:  role "analitics_user" does not exist
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 58, in process_job
+    with (get_main_db_cursor() as main_cursor,
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/connections.py", line 34, in get_analytic_db_cursor
+    with closing(psycopg.connect(settings.analytic_database.connection_url)) as conn:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 125, in connect
+    raise type(last_ex)("\n".join(lines)).with_traceback(None)
+psycopg.OperationalError: connection failed: подключиться к серверу "127.0.0.1", порту 5432 не удалось: FATAL:  role "analitics_user" does not exist
+Multiple connection attempts failed. All failures were:
+- host: 'localhost', port: '5432', hostaddr: '::1': connection failed: подключиться к серверу "::1", порту 5432 не удалось: FATAL:  role "analitics_user" does not exist
+- host: 'localhost', port: '5432', hostaddr: '127.0.0.1': connection failed: подключиться к серверу "127.0.0.1", порту 5432 не удалось: FATAL:  role "analitics_user" does not exist
+2025-07-14 17:51:21,621 INFO Обработка задания: test.json
+2025-07-14 17:51:21,679 ERROR Ошибка при выполнении задания test.json: column "updated_at" does not exist
+СТРОКА 1: SELECT id, name, email, updated_at FROM users;
+                                  ^
+ПОДСКАЗКА:  Perhaps you meant to reference the column "users.created_at".
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 63, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "updated_at" does not exist
+СТРОКА 1: SELECT id, name, email, updated_at FROM users;
+                                  ^
+ПОДСКАЗКА:  Perhaps you meant to reference the column "users.created_at".
+2025-07-14 17:52:20,172 INFO Обработка задания: test.json
+2025-07-14 17:53:47,094 INFO Обработка задания: test.json
+2025-07-14 17:54:26,808 INFO Обработка задания: test.json
+2025-07-14 17:54:26,860 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 17:59:41,559 INFO Обработка задания: test.json
+2025-07-14 17:59:41,629 ERROR Ошибка при выполнении задания test.json: 'Cursor' object has no attribute 'commit'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 63, in process_job
+    analytic_cursor.commit()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Cursor' object has no attribute 'commit'
+2025-07-14 18:00:03,743 INFO Обработка задания: test.json
+2025-07-14 18:00:03,779 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:20,794 INFO Обработка задания: test.json
+2025-07-14 18:03:20,853 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:24,552 INFO Обработка задания: test.json
+2025-07-14 18:03:24,577 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:33,239 INFO Обработка задания: test.json
+2025-07-14 18:03:33,268 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:45,038 INFO Обработка задания: test.json
+2025-07-14 18:03:45,074 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:47,740 INFO Обработка задания: test.json
+2025-07-14 18:03:47,770 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:49,124 INFO Обработка задания: test.json
+2025-07-14 18:03:49,210 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:50,489 INFO Обработка задания: test.json
+2025-07-14 18:03:50,517 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:03:58,920 INFO Обработка задания: test.json
+2025-07-14 18:03:58,944 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:04:02,933 INFO Обработка задания: test.json
+2025-07-14 18:04:02,972 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:04:09,585 INFO Обработка задания: test.json
+2025-07-14 18:04:09,612 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:04:18,451 INFO Обработка задания: test.json
+2025-07-14 18:04:18,476 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:04:23,852 INFO Обработка задания: test.json
+2025-07-14 18:04:23,879 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:05:19,172 INFO Обработка задания: test.json
+2025-07-14 18:05:46,850 INFO Обработка задания: test.json
+2025-07-14 18:06:00,201 INFO Обработка задания: test.json
+2025-07-14 18:06:04,952 INFO Обработка задания: test.json
+2025-07-14 18:06:04,978 ERROR Ошибка при выполнении задания test.json: tuple index out of range
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 79, in process_job
+    print(row_tuple[4])
+          ~~~~~~~~~^^^
+IndexError: tuple index out of range
+2025-07-14 18:06:08,759 INFO Обработка задания: test.json
+2025-07-14 18:06:14,016 INFO Обработка задания: test.json
+2025-07-14 18:08:13,108 INFO Обработка задания: test.json
+2025-07-14 18:11:14,305 INFO Обработка задания: test.json
+2025-07-14 18:11:46,440 INFO Обработка задания: test.json
+2025-07-14 18:11:46,475 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:12:41,540 INFO Обработка задания: test.json
+2025-07-14 18:12:41,577 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:15:26,274 INFO Обработка задания: test.json
+2025-07-14 18:15:26,305 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-14 18:19:43,681 INFO Обработка задания: test.json
+2025-07-14 18:19:43,758 ERROR Ошибка при выполнении задания test.json: 'Cursor' object has no attribute 'commit'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 63, in process_job
+    analytic_cursor.commit()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Cursor' object has no attribute 'commit'
+2025-07-15 08:42:56,847 INFO Обработка задания: test.json
+2025-07-15 08:42:56,993 ERROR Ошибка при выполнении задания test.json: 'Cursor' object has no attribute 'commit'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 63, in process_job
+    analytic_cursor.commit()
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Cursor' object has no attribute 'commit'
+2025-07-15 08:43:10,046 INFO Обработка задания: test.json
+2025-07-15 08:43:10,099 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 08:43:29,841 INFO Обработка задания: test.json
+2025-07-15 08:43:29,884 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 08:44:26,817 INFO Обработка задания: test.json
+2025-07-15 08:45:14,386 INFO Обработка задания: test.json
+2025-07-15 08:45:33,911 INFO Обработка задания: test.json
+2025-07-15 08:45:33,958 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 08:45:55,324 INFO Обработка задания: test.json
+2025-07-15 08:45:55,367 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 08:56:09,629 INFO Обработка задания: test.json
+2025-07-15 08:56:09,781 ERROR Ошибка при выполнении задания test.json: the last operation didn't produce records (command status: CREATE TABLE)
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 63, in process_job
+    result_create_table = analytic_cursor.fetchone()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 186, in fetchone
+    res = self._check_result_for_fetch()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 590, in _check_result_for_fetch
+    raise e.ProgrammingError(
+psycopg.ProgrammingError: the last operation didn't produce records (command status: CREATE TABLE)
+2025-07-15 08:57:24,233 INFO Обработка задания: test.json
+2025-07-15 08:57:24,273 ERROR Ошибка при выполнении задания test.json: syntax error at or near "RETURNING"
+СТРОКА 1: ...me VARCHAR, email VARCHAR, updated_at TIMESTAMP); RETURNING ...
+                                                               ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 62, in process_job
+    analytic_cursor.execute(job["CREATE_TABLE_SQL"]  + " RETURNING *" )
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "RETURNING"
+СТРОКА 1: ...me VARCHAR, email VARCHAR, updated_at TIMESTAMP); RETURNING ...
+                                                               ^
+2025-07-15 08:58:00,772 INFO Обработка задания: test.json
+2025-07-15 08:58:00,805 ERROR Ошибка при выполнении задания test.json: syntax error at or near "RETURNING"
+СТРОКА 1: ...ame VARCHAR, email VARCHAR, updated_at TIMESTAMP) RETURNING ...
+                                                               ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 62, in process_job
+    analytic_cursor.execute(job["CREATE_TABLE_SQL"])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "RETURNING"
+СТРОКА 1: ...ame VARCHAR, email VARCHAR, updated_at TIMESTAMP) RETURNING ...
+                                                               ^
+2025-07-15 09:27:39,342 INFO Обработка задания: test.json
+2025-07-15 09:27:39,639 ERROR Ошибка при выполнении задания test.json: Error 61 connecting to 127.0.0.1:6379. Connection refused.
+Traceback (most recent call last):
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 385, in connect_check_health
+    sock = self.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 386, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+            ^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 797, in _connect
+    raise err
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 781, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 70, in process_job
+    existing_hashes = redis.hgetall(redis_key)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/commands/core.py", line 4959, in hgetall
+    return self.execute_command("HGETALL", name, keys=[name])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/client.py", line 629, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/utils.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 1530, in get_connection
+    connection.connect()
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 379, in connect
+    self.connect_check_health(check_health=True)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 391, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to 127.0.0.1:6379. Connection refused.
+2025-07-15 09:28:14,636 INFO Обработка задания: test.json
+2025-07-15 09:28:14,699 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 09:29:25,543 INFO Обработка задания: test.json
+2025-07-15 09:29:25,599 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 09:50:19,373 INFO Обработка задания: test.json
+2025-07-15 09:50:19,500 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 09:50:33,914 INFO Обработка задания: test.json
+2025-07-15 09:50:33,960 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 09:50:33,960 ERROR Ошибка при выполнении задания test.json: 'zip' object is not subscriptable
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 85, in process_job
+    row_key = get_row_key(row_dict, key_columns)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 20, in get_row_key
+    return '|'.join(str(row[col]) for col in key_columns)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 20, in <genexpr>
+    return '|'.join(str(row[col]) for col in key_columns)
+                        ~~~^^^^^
+TypeError: 'zip' object is not subscriptable
+2025-07-15 09:51:08,654 INFO Обработка задания: test.json
+2025-07-15 09:51:08,717 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 09:51:33,006 INFO Обработка задания: test.json
+2025-07-15 09:51:33,047 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 09:51:47,895 INFO Обработка задания: test.json
+2025-07-15 09:51:47,934 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 09:51:56,768 INFO Обработка задания: test.json
+2025-07-15 09:51:56,808 INFO Запрос "SELECT id, name, email, created_at FROM users;" отправлен успешно
+2025-07-15 17:27:21,419 INFO Обработка задания: test.json
+2025-07-15 17:27:22,007 ERROR Ошибка при выполнении задания test.json: the query has 1 placeholders but 0 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 66, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"], [hash_date] if hash_date else [])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 1 placeholders but 0 parameters were passed
+2025-07-15 17:29:57,132 INFO Обработка задания: test.json
+2025-07-15 17:29:57,214 ERROR Ошибка при выполнении задания test.json: object of type 'int' has no len()
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 68, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"], [hash_date] if hash_date else 0)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 354, in wait_poll
+    s = gen.send(ready)
+        ^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 194, in _execute_gen
+    pgq = self._convert_query(query, params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 453, in _convert_query
+    pgq.convert(query, params)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_queries.py", line 82, in convert
+    and len(vars) <= MAX_CACHED_STATEMENT_PARAMS
+        ^^^^^^^^^
+TypeError: object of type 'int' has no len()
+2025-07-15 17:31:17,709 INFO Обработка задания: test.json
+2025-07-15 17:31:17,746 ERROR Ошибка при выполнении задания test.json: object of type 'int' has no len()
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 68, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"], [hash_date] if hash_date else 0)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 354, in wait_poll
+    s = gen.send(ready)
+        ^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 194, in _execute_gen
+    pgq = self._convert_query(query, params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 453, in _convert_query
+    pgq.convert(query, params)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_queries.py", line 82, in convert
+    and len(vars) <= MAX_CACHED_STATEMENT_PARAMS
+        ^^^^^^^^^
+TypeError: object of type 'int' has no len()
+2025-07-15 17:32:25,936 INFO Обработка задания: test.json
+2025-07-15 17:32:25,979 ERROR Ошибка при выполнении задания test.json: object of type 'int' has no len()
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 68, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"], [hash_date] if hash_date else 0)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 354, in wait_poll
+    s = gen.send(ready)
+        ^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 194, in _execute_gen
+    pgq = self._convert_query(query, params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 453, in _convert_query
+    pgq.convert(query, params)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_queries.py", line 82, in convert
+    and len(vars) <= MAX_CACHED_STATEMENT_PARAMS
+        ^^^^^^^^^
+TypeError: object of type 'int' has no len()
+2025-07-15 17:32:40,748 INFO Обработка задания: test.json
+2025-07-15 17:32:40,780 ERROR Ошибка при выполнении задания test.json: object of type 'int' has no len()
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 68, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"], [hash_date] if hash_date else 0)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 354, in wait_poll
+    s = gen.send(ready)
+        ^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 194, in _execute_gen
+    pgq = self._convert_query(query, params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 453, in _convert_query
+    pgq.convert(query, params)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_queries.py", line 82, in convert
+    and len(vars) <= MAX_CACHED_STATEMENT_PARAMS
+        ^^^^^^^^^
+TypeError: object of type 'int' has no len()
+2025-07-15 17:36:29,279 INFO Обработка задания: test.json
+2025-07-15 17:36:29,371 ERROR Ошибка при выполнении задания test.json: object of type 'datetime.datetime' has no len()
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 67, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"], [hash_date] if hash_date else date_default)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 354, in wait_poll
+    s = gen.send(ready)
+        ^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 194, in _execute_gen
+    pgq = self._convert_query(query, params)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 453, in _convert_query
+    pgq.convert(query, params)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_queries.py", line 82, in convert
+    and len(vars) <= MAX_CACHED_STATEMENT_PARAMS
+        ^^^^^^^^^
+TypeError: object of type 'datetime.datetime' has no len()
+2025-07-15 17:36:50,581 INFO Обработка задания: test.json
+2025-07-15 17:36:50,617 ERROR Ошибка при выполнении задания test.json: column "updated_at" does not exist
+СТРОКА 1: ...LECT id, name, email, created_at FROM users WHERE updated_at...
+                                                               ^
+ПОДСКАЗКА:  Perhaps you meant to reference the column "users.created_at".
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 67, in process_job
+    main_cursor.execute(job["SELECT_SOURCE_SQL"], [hash_date] if hash_date else [date_default])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "updated_at" does not exist
+СТРОКА 1: ...LECT id, name, email, created_at FROM users WHERE updated_at...
+                                                               ^
+ПОДСКАЗКА:  Perhaps you meant to reference the column "users.created_at".
+2025-07-15 17:40:16,468 INFO Обработка задания: test.json
+2025-07-15 17:42:10,770 INFO Обработка задания: test.json
+2025-07-15 17:42:53,334 INFO Обработка задания: test.json
+2025-07-15 17:42:53,375 ERROR syntax error at or near "%"
+СТРОКА 1: ...d, name, email, created_at FROM users WHERE updated_at > %s;
+                                                                      ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 39, in extract_data
+    main_cursor.execute(query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "%"
+СТРОКА 1: ...d, name, email, created_at FROM users WHERE updated_at > %s;
+                                                                      ^
+2025-07-15 17:42:53,376 ERROR Ошибка при выполнении задания test.json: 
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 39, in extract_data
+    main_cursor.execute(query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "%"
+СТРОКА 1: ...d, name, email, created_at FROM users WHERE updated_at > %s;
+                                                                      ^
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 72, in process_job
+    for row_tuple in rows:
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 42, in extract_data
+    raise OperationalError
+psycopg.OperationalError
+2025-07-15 17:46:44,330 INFO Обработка задания: test.json
+2025-07-15 17:46:44,403 ERROR Ошибка при выполнении задания test.json: 'NoneType' object is not iterable
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 69, in process_job
+    columns = [col.name for col in main_cursor.description]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not iterable
+2025-07-15 17:53:57,322 INFO Обработка задания: test.json
+2025-07-15 17:53:57,474 INFO Запрос "SELECT id, name, email, created_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 17:54:28,376 INFO Обработка задания: test.json
+2025-07-15 17:54:28,410 INFO Запрос "SELECT id, name, email, created_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 17:54:41,150 INFO Обработка задания: test.json
+2025-07-15 17:54:41,192 INFO Запрос "SELECT id, name, email, created_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 17:55:26,026 INFO Обработка задания: test.json
+2025-07-15 17:55:26,064 INFO Запрос "SELECT id, name, email, created_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 17:56:26,464 INFO Обработка задания: test.json
+2025-07-15 17:56:26,499 INFO Запрос "SELECT id, name, email, created_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:00:25,215 INFO Обработка задания: test.json
+2025-07-15 18:00:25,258 INFO Запрос "SELECT id, name, email, created_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:01:14,696 INFO Обработка задания: test.json
+2025-07-15 18:01:14,731 INFO Запрос "SELECT id, name, email, created_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:02:04,054 INFO Обработка задания: test.json
+2025-07-15 18:02:04,093 INFO Запрос "SELECT id, name, email, created_at updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:02:30,127 INFO Обработка задания: test.json
+2025-07-15 18:02:30,159 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:05:20,899 INFO Обработка задания: test.json
+2025-07-15 18:05:20,953 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:21:37,392 INFO Обработка задания: test.json
+2025-07-15 18:21:37,510 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:21:37,515 ERROR Ошибка при выполнении задания test.json: column "created_at" of relation "users" does not exist
+СТРОКА 1: INSERT INTO users (id, name, email, created_at, updated_at) ...
+                                              ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 73, in process_job
+    analytic_cursor.executemany(upsert_target_sql, data_in_source_db)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 127, in executemany
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "created_at" of relation "users" does not exist
+СТРОКА 1: INSERT INTO users (id, name, email, created_at, updated_at) ...
+                                              ^
+2025-07-15 18:23:11,895 INFO Обработка задания: test.json
+2025-07-15 18:23:11,926 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 18:26:16,793 INFO Обработка задания: test.json
+2025-07-15 18:26:16,849 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:07:46,185 INFO Обработка задания: test.json
+2025-07-15 19:07:46,296 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:07:46,298 INFO Вставлено 3 записей в users
+2025-07-15 19:08:08,200 INFO Обработка задания: test.json
+2025-07-15 19:08:08,237 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:08:08,239 INFO Вставлено 3 записей в users
+2025-07-15 19:10:30,566 INFO Обработка задания: test.json
+2025-07-15 19:10:30,606 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:10:30,608 INFO Вставлены/обновлены 3 записи в таблицу users
+2025-07-15 19:11:58,272 INFO Обработка задания: test.json
+2025-07-15 19:11:58,325 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:11:58,328 INFO Вставлены/обновлены 3 записи в таблицу users
+2025-07-15 19:14:30,334 INFO Обработка задания: test.json
+2025-07-15 19:14:30,669 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:14:30,738 INFO Вставлены/обновлены 3 записи в таблицу users
+2025-07-15 19:14:50,008 INFO Обработка задания: test.json
+2025-07-15 19:14:50,042 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:14:50,043 INFO Вставлены/обновлены 3 записи в таблицу users
+2025-07-15 19:14:58,074 INFO Обработка задания: test.json
+2025-07-15 19:14:58,119 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:14:58,120 INFO Вставлены/обновлены 3 записи в таблицу users
+2025-07-15 19:18:05,864 INFO Обработка задания: test.json
+2025-07-15 19:18:05,939 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:18:05,941 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:24:09,649 INFO Обработка задания: test.json
+2025-07-15 19:24:09,759 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:24:09,762 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:24:55,450 INFO Обработка задания: test.json
+2025-07-15 19:24:55,529 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:24:55,531 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:26:36,307 INFO Обработка задания: test.json
+2025-07-15 19:26:36,343 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:26:36,345 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:27:17,857 INFO Обработка задания: test.json
+2025-07-15 19:27:17,927 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:27:17,928 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:27:54,608 INFO Обработка задания: test.json
+2025-07-15 19:27:54,653 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:27:54,656 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:28:16,557 INFO Обработка задания: test.json
+2025-07-15 19:28:16,615 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:28:16,615 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:29:46,411 INFO Обработка задания: test.json
+2025-07-15 19:29:46,450 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:29:46,451 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:34:22,537 INFO Обработка задания: test.json
+2025-07-15 19:34:22,574 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:34:22,575 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:34:47,602 INFO Обработка задания: test.json
+2025-07-15 19:34:47,636 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:34:47,638 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:35:09,316 INFO Обработка задания: test.json
+2025-07-15 19:35:09,353 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:35:09,355 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:35:09,360 ERROR Ошибка при выполнении задания test.json: invalid input syntax for type integer: "id"
+СТРОКА 1: DELETE FROM users WHERE ('id', 'name') NOT IN ((2, 'Гриша'),...
+                                   ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 86, in process_job
+    analytic_cursor.execute(delete_query_sql)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.InvalidTextRepresentation: invalid input syntax for type integer: "id"
+СТРОКА 1: DELETE FROM users WHERE ('id', 'name') NOT IN ((2, 'Гриша'),...
+                                   ^
+2025-07-15 19:44:16,467 INFO Обработка задания: test.json
+2025-07-15 19:44:16,634 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:44:16,638 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:45:26,927 INFO Обработка задания: test.json
+2025-07-15 19:45:26,961 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:45:26,964 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:45:26,979 ERROR Ошибка при выполнении задания test.json: invalid input syntax for type integer: "id"
+СТРОКА 1: DELETE FROM users WHERE ('id', 'name') NOT IN ((2, 'Гриша'),...
+                                   ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 78, in process_job
+    analytic_cursor.execute(delete_query_sql)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.InvalidTextRepresentation: invalid input syntax for type integer: "id"
+СТРОКА 1: DELETE FROM users WHERE ('id', 'name') NOT IN ((2, 'Гриша'),...
+                                   ^
+2025-07-15 19:45:40,794 INFO Обработка задания: test.json
+2025-07-15 19:45:40,851 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:45:40,852 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:46:56,718 INFO Обработка задания: test.json
+2025-07-15 19:46:56,752 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:46:56,753 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:47:07,756 INFO Обработка задания: test.json
+2025-07-15 19:47:07,794 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:47:07,795 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:47:32,881 INFO Обработка задания: test.json
+2025-07-15 19:47:32,917 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:47:32,918 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:47:57,799 INFO Обработка задания: test.json
+2025-07-15 19:47:57,840 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:47:57,842 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:48:15,972 INFO Обработка задания: test.json
+2025-07-15 19:48:16,005 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:48:16,006 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:55:36,115 INFO Обработка задания: test.json
+2025-07-15 19:55:36,213 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:55:36,215 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:56:53,415 INFO Обработка задания: test.json
+2025-07-15 19:56:53,482 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:56:53,483 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:57:14,425 INFO Обработка задания: test.json
+2025-07-15 19:57:14,460 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:57:14,464 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 19:57:24,943 INFO Обработка задания: test.json
+2025-07-15 19:57:24,976 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 19:57:24,978 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:01:31,209 INFO Обработка задания: test.json
+2025-07-15 20:01:31,252 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:01:31,254 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:13:09,224 INFO Обработка задания: test.json
+2025-07-15 20:13:09,357 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:13:09,360 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:13:09,360 ERROR Ошибка при выполнении задания test.json: SQL identifier parts must be strings, got (2, 'Гриша') instead
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 70, in process_job
+    values = [sql.Identifier(value) for value in values_in_main_db]
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/sql.py", line 366, in __init__
+    raise TypeError(
+TypeError: SQL identifier parts must be strings, got (2, 'Гриша') instead
+2025-07-15 20:14:21,977 INFO Обработка задания: test.json
+2025-07-15 20:14:22,018 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:14:22,019 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:14:22,020 ERROR Ошибка при выполнении задания test.json: 'values'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 74, in process_job
+    delete_query_sql = sql.SQL("DELETE FROM {table} WHERE ({name_columns}) NOT IN ({values})").format(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/sql.py", line 287, in format
+    rv.append(kwargs[name])
+              ~~~~~~^^^^^^
+KeyError: 'values'
+2025-07-15 20:14:36,929 INFO Обработка задания: test.json
+2025-07-15 20:14:36,960 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:14:36,962 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:15:07,892 INFO Обработка задания: test.json
+2025-07-15 20:15:07,928 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:15:07,931 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:18:36,710 INFO Обработка задания: test.json
+2025-07-15 20:18:36,791 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:18:36,793 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:18:36,793 ERROR Ошибка при выполнении задания test.json: name 'placeholders' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 76, in process_job
+    placeholders=sql.SQL(', ').join(placeholders),
+                                    ^^^^^^^^^^^^
+NameError: name 'placeholders' is not defined
+2025-07-15 20:23:40,152 INFO Обработка задания: test.json
+2025-07-15 20:23:40,236 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:23:40,239 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:24:02,607 INFO Обработка задания: test.json
+2025-07-15 20:24:02,645 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:24:02,646 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:24:02,649 ERROR Ошибка при выполнении задания test.json: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN (%s, %s, %s)
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 85, in process_job
+    analytic_cursor.execute(delete_query_sql)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN (%s, %s, %s)
+                                                           ^
+2025-07-15 20:26:52,710 INFO Обработка задания: test.json
+2025-07-15 20:26:52,747 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:26:52,749 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:26:52,753 ERROR Ошибка при выполнении задания test.json: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN (%s, %s, %s)
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 85, in process_job
+    analytic_cursor.execute(delete_query_sql)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN (%s, %s, %s)
+                                                           ^
+2025-07-15 20:36:41,368 INFO Обработка задания: test.json
+2025-07-15 20:36:41,775 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:36:41,829 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:36:41,863 ERROR Ошибка при выполнении задания test.json: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE "id" NOT IN (%s, %s, %s)
+                                                 ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 92, in process_job
+    analytic_cursor.execute(delete_query_sql)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE "id" NOT IN (%s, %s, %s)
+                                                 ^
+2025-07-15 20:36:47,042 INFO Обработка задания: test.json
+2025-07-15 20:36:47,071 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:36:47,072 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:37:03,368 INFO Обработка задания: test.json
+2025-07-15 20:37:03,400 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:37:03,401 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:37:03,405 ERROR Ошибка при выполнении задания test.json: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE "id" NOT IN (%s, %s, %s)
+                                                 ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 92, in process_job
+    analytic_cursor.execute(delete_query_sql)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "%"
+СТРОКА 1: DELETE FROM "users" WHERE "id" NOT IN (%s, %s, %s)
+                                                 ^
+2025-07-15 20:46:27,109 INFO Обработка задания: test.json
+2025-07-15 20:46:27,198 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:46:27,199 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:51:55,813 INFO Обработка задания: test.json
+2025-07-15 20:51:55,922 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:51:55,924 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:51:55,925 INFO Удалено 0 записей из users
+2025-07-15 20:52:15,102 INFO Обработка задания: test.json
+2025-07-15 20:52:15,130 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:52:15,131 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:52:15,132 INFO Удалено 0 записей из users
+2025-07-15 20:54:02,051 INFO Обработка задания: test.json
+2025-07-15 20:54:02,117 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:54:02,121 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:54:02,123 INFO Удалено 0 записей из таблицы users
+2025-07-15 20:55:45,944 INFO Обработка задания: test.json
+2025-07-15 20:55:45,981 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 20:55:45,982 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 20:55:45,983 INFO Удалено 0 записей из таблицы users
+2025-07-15 20:55:45,984 ERROR Ошибка при выполнении задания test.json: Invalid input of type: 'datetime'. Convert to a bytes, string, int or float first.
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 94, in process_job
+    redis.append(hash_key, current_date)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/commands/core.py", line 1570, in append
+    return self.execute_command("APPEND", key, value)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/client.py", line 623, in execute_command
+    return self._execute_command(*args, **options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/client.py", line 634, in _execute_command
+    return conn.retry.call_with_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/retry.py", line 87, in call_with_retry
+    return do()
+           ^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/client.py", line 635, in <lambda>
+    lambda: self._send_command_parse_response(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/client.py", line 605, in _send_command_parse_response
+    conn.send_command(*args, **options)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 609, in send_command
+    self._command_packer.pack(*args),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/connection.py", line 114, in pack
+    for arg in map(self.encode, args):
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/redis/_parsers/encoders.py", line 29, in encode
+    raise DataError(
+redis.exceptions.DataError: Invalid input of type: 'datetime'. Convert to a bytes, string, int or float first.
+2025-07-15 21:04:29,947 INFO Обработка задания: test.json
+2025-07-15 21:04:30,164 ERROR Ошибка при выполнении задания test.json: HashCommands.hget() missing 1 required positional argument: 'key'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 57, in process_job
+    hash_date = redis.hget(hash_key)
+                ^^^^^^^^^^^^^^^^^^^^
+TypeError: HashCommands.hget() missing 1 required positional argument: 'key'
+2025-07-15 21:05:49,918 INFO Обработка задания: test.json
+2025-07-15 21:05:49,958 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:05:49,961 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:05:49,963 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:05:49,964 ERROR Ошибка при выполнении задания test.json: HashCommands.hget() missing 1 required positional argument: 'key'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 95, in process_job
+    print(redis.hget(hash_key))
+          ^^^^^^^^^^^^^^^^^^^^
+TypeError: HashCommands.hget() missing 1 required positional argument: 'key'
+2025-07-15 21:06:04,173 INFO Обработка задания: test.json
+2025-07-15 21:06:04,210 ERROR operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 30, in extract_data
+    main_cursor.execute(query, [hash_date] if hash_date else [date_default])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2025-07-15 21:06:04,210 ERROR Ошибка при выполнении задания test.json: 
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 30, in extract_data
+    main_cursor.execute(query, [hash_date] if hash_date else [date_default])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 61, in process_job
+    for rows_tuple in rows:
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 33, in extract_data
+    raise OperationalError
+psycopg.OperationalError
+2025-07-15 21:07:02,373 INFO Обработка задания: test.json
+2025-07-15 21:07:02,405 ERROR operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 30, in extract_data
+    main_cursor.execute(query, [hash_date] if hash_date else [date_default])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2025-07-15 21:07:02,406 ERROR Ошибка при выполнении задания test.json: 
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 30, in extract_data
+    main_cursor.execute(query, [hash_date] if hash_date else [date_default])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 61, in process_job
+    for rows_tuple in rows:
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 33, in extract_data
+    raise OperationalError
+psycopg.OperationalError
+2025-07-15 21:18:42,479 INFO Обработка задания: test.json
+2025-07-15 21:18:42,565 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:18:42,568 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:18:42,569 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:18:42,569 ERROR Ошибка при выполнении задания test.json: HashCommands.hget() missing 1 required positional argument: 'key'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 96, in process_job
+    print(redis.hget(redis_key))
+          ^^^^^^^^^^^^^^^^^^^^^
+TypeError: HashCommands.hget() missing 1 required positional argument: 'key'
+2025-07-15 21:19:03,017 INFO Обработка задания: test.json
+2025-07-15 21:19:03,053 ERROR operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 30, in extract_data
+    main_cursor.execute(query, [hash_date] if hash_date else [date_default])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2025-07-15 21:19:03,053 ERROR Ошибка при выполнении задания test.json: 
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 30, in extract_data
+    main_cursor.execute(query, [hash_date] if hash_date else [date_default])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: timestamp without time zone > bytea
+СТРОКА 1: ...il, created_at, updated_at FROM users WHERE updated_at > $1;
+                                                                    ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 62, in process_job
+    for rows_tuple in rows:
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 33, in extract_data
+    raise OperationalError
+psycopg.OperationalError
+2025-07-15 21:19:17,521 INFO Обработка задания: test.json
+2025-07-15 21:19:17,550 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:19:17,551 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:19:17,552 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:20:03,093 INFO Обработка задания: test.json
+2025-07-15 21:20:03,134 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:20:03,135 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:20:03,136 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:20:16,500 INFO Обработка задания: test.json
+2025-07-15 21:20:16,534 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:20:16,535 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:20:16,536 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:20:38,837 INFO Обработка задания: test.json
+2025-07-15 21:20:38,869 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:20:38,870 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:20:38,871 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:22:59,813 INFO Обработка задания: test.json
+2025-07-15 21:22:59,851 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:22:59,851 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:22:59,852 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:23:03,544 INFO Обработка задания: test.json
+2025-07-15 21:23:03,572 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:23:03,572 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:23:03,573 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:23:19,174 INFO Обработка задания: test.json
+2025-07-15 21:23:19,205 ERROR Ошибка при выполнении задания test.json: cannot access local variable 'last_date' where it is not associated with a value
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 60, in process_job
+    rows = extract_data(main_cursor, select_source_sql, last_date)
+                                                        ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'last_date' where it is not associated with a value
+2025-07-15 21:26:39,792 INFO Обработка задания: test.json
+2025-07-15 21:26:39,870 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:26:39,871 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:26:39,873 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:28:23,747 INFO Обработка задания: test.json
+2025-07-15 21:28:23,798 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:28:23,798 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:28:23,799 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:31:05,168 INFO Обработка задания: test.json
+2025-07-15 21:31:05,240 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:31:05,240 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:31:05,244 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:31:49,551 INFO Обработка задания: test.json
+2025-07-15 21:31:49,586 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:31:49,586 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:31:49,587 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:32:23,388 INFO Обработка задания: test.json
+2025-07-15 21:32:23,415 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:32:23,415 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:32:23,417 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:32:23,417 ERROR Ошибка при выполнении задания test.json: 'Connection' object has no attribute 'coomit'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 97, in process_job
+    main_cursor.connection.coomit()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Connection' object has no attribute 'coomit'. Did you mean: 'commit'?
+2025-07-15 21:32:29,474 INFO Обработка задания: test.json
+2025-07-15 21:32:29,496 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:32:29,496 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:32:29,497 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:32:29,498 ERROR Ошибка при выполнении задания test.json: 'Connection' object has no attribute 'comit'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 97, in process_job
+    main_cursor.connection.comit()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Connection' object has no attribute 'comit'. Did you mean: 'commit'?
+2025-07-15 21:32:34,979 INFO Обработка задания: test.json
+2025-07-15 21:32:35,002 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:32:35,002 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:32:35,003 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:33:00,448 INFO Обработка задания: test.json
+2025-07-15 21:33:00,471 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:33:00,472 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:33:00,473 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:33:44,430 INFO Обработка задания: test.json
+2025-07-15 21:33:44,469 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:33:44,471 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:33:44,472 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:34:20,553 INFO Обработка задания: test.json
+2025-07-15 21:34:20,589 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:34:20,589 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:34:20,590 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:34:49,933 INFO Обработка задания: test.json
+2025-07-15 21:34:49,967 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:34:49,969 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-15 21:34:49,969 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:36:22,743 INFO Обработка задания: test.json
+2025-07-15 21:36:22,769 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:36:22,770 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-15 21:36:22,772 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:37:47,333 INFO Обработка задания: test.json
+2025-07-15 21:37:47,363 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:37:47,364 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-15 21:37:47,366 INFO Удалено 1 записей из таблицы users
+2025-07-15 21:38:26,765 INFO Обработка задания: test.json
+2025-07-15 21:38:26,793 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:38:26,793 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:38:26,794 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:42:11,912 INFO Обработка задания: test.json
+2025-07-15 21:42:11,976 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:42:11,976 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-15 21:42:11,978 INFO Удалено 0 записей из таблицы users
+2025-07-15 21:42:41,314 INFO Обработка задания: test.json
+2025-07-15 21:42:41,351 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-15 21:42:41,353 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-15 21:42:41,354 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:26:14,503 INFO Обработка задания: test.json
+2025-07-16 10:26:14,702 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:26:14,706 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 10:26:14,708 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:26:19,095 INFO Обработка задания: test.json
+2025-07-16 10:26:19,124 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:26:19,124 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 10:26:19,126 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:27:02,969 INFO Обработка задания: test.json
+2025-07-16 10:27:03,023 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:27:03,024 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 10:27:03,025 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:27:19,459 INFO Обработка задания: test.json
+2025-07-16 10:27:19,497 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:27:19,497 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 10:27:19,498 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:27:31,020 INFO Обработка задания: test.json
+2025-07-16 10:27:31,055 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:27:31,056 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 10:27:31,058 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:28:39,213 INFO Обработка задания: test.json
+2025-07-16 10:28:39,257 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:28:39,259 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 10:28:39,260 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:29:20,186 INFO Обработка задания: test.json
+2025-07-16 10:29:20,229 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:29:20,230 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 10:29:20,231 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:30:32,502 INFO Обработка задания: test.json
+2025-07-16 10:30:32,539 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:30:32,542 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-16 10:30:32,543 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:32:14,534 INFO Обработка задания: test.json
+2025-07-16 10:32:14,572 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:32:14,573 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-16 10:32:14,575 INFO Удалено 1 записей из таблицы users
+2025-07-16 10:32:18,277 INFO Обработка задания: test.json
+2025-07-16 10:32:18,307 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:32:18,308 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 10:32:18,309 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:32:20,115 INFO Обработка задания: test.json
+2025-07-16 10:32:20,146 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:32:20,147 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 10:32:20,148 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:32:21,577 INFO Обработка задания: test.json
+2025-07-16 10:32:21,605 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:32:21,606 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 10:32:21,607 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:32:23,304 INFO Обработка задания: test.json
+2025-07-16 10:32:23,332 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:32:23,333 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 10:32:23,334 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:38:43,265 INFO Обработка задания: test.json
+2025-07-16 10:38:43,315 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:38:43,317 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-16 10:38:43,318 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:39:16,902 INFO Обработка задания: test.json
+2025-07-16 10:39:16,944 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:39:16,946 INFO Вставлено/обновлено 5 записей в таблицу users
+2025-07-16 10:39:16,947 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:39:30,265 INFO Обработка задания: test.json
+2025-07-16 10:39:30,297 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:39:30,298 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 10:39:30,300 INFO Удалено 1 записей из таблицы users
+2025-07-16 10:40:15,483 INFO Обработка задания: test.json
+2025-07-16 10:40:15,526 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:40:15,526 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 10:40:15,528 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:45:31,006 INFO Обработка задания: test.json
+2025-07-16 10:45:31,105 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:45:31,105 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 10:45:31,110 INFO Удалено 0 записей из таблицы users
+2025-07-16 10:46:23,201 INFO Обработка задания: test.json
+2025-07-16 10:46:23,235 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 10:46:23,236 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 10:46:23,237 INFO Удалено 0 записей из таблицы users
+2025-07-16 13:21:59,867 INFO Начало обработки задания: test.json
+2025-07-16 13:22:00,076 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:22:00,077 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:22:00,106 ERROR Ошибка при выполнении задания test.json: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 105, in process_job
+    main_cursor.execute(select_keys_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+2025-07-16 13:22:34,619 INFO Начало обработки задания: test.json
+2025-07-16 13:22:34,780 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:22:34,780 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:22:34,781 ERROR Ошибка при выполнении задания test.json: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+2025-07-16 13:22:44,394 INFO Начало обработки задания: test.json
+2025-07-16 13:22:44,420 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:22:44,421 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:22:44,421 ERROR Ошибка при выполнении задания test.json: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+2025-07-16 13:23:42,543 INFO Начало обработки задания: test.json
+2025-07-16 13:23:42,571 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:23:42,571 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:23:42,572 ERROR Ошибка при выполнении задания test.json: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+2025-07-16 13:23:54,955 INFO Начало обработки задания: test.json
+2025-07-16 13:23:54,983 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:23:54,983 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:23:54,984 ERROR Ошибка при выполнении задания test.json: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+2025-07-16 13:24:06,747 INFO Начало обработки задания: test.json
+2025-07-16 13:24:06,771 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:24:06,772 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:24:06,772 ERROR Ошибка при выполнении задания test.json: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+2025-07-16 13:30:06,384 INFO Начало обработки задания: test.json
+2025-07-16 13:30:06,461 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:30:06,462 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:30:06,472 INFO Удалено 0 записей из таблицы users
+2025-07-16 13:30:06,473 INFO Задание test.json выполнено успешно
+2025-07-16 13:30:52,838 INFO Начало обработки задания: test.json
+2025-07-16 13:30:52,882 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:30:52,885 INFO Вставлено/обновлено 4 записей в таблицу users
+2025-07-16 13:30:52,886 INFO Удалено 0 записей из таблицы users
+2025-07-16 13:30:52,886 INFO Задание test.json выполнено успешно
+2025-07-16 13:32:56,693 INFO Запуск цикла ETL
+2025-07-16 13:32:56,693 INFO Начало обработки задания: test.json
+2025-07-16 13:32:56,724 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:32:56,724 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:32:56,725 ERROR Ошибка при выполнении задания test.json: syntax error at or near "FROM"
+СТРОКА 1: SELECT id, FROM users;
+                     ^
+2025-07-16 13:37:56,745 INFO Начало обработки задания: test.json
+2025-07-16 13:37:56,810 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:37:56,811 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:37:56,823 INFO Удалено 0 записей из таблицы users
+2025-07-16 13:37:56,824 INFO Задание test.json выполнено успешно
+2025-07-16 13:42:56,839 INFO Начало обработки задания: test.json
+2025-07-16 13:42:56,875 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:42:56,876 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:42:56,879 INFO Удалено 0 записей из таблицы users
+2025-07-16 13:42:56,880 INFO Задание test.json выполнено успешно
+2025-07-16 13:47:56,913 INFO Начало обработки задания: test.json
+2025-07-16 13:47:56,984 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:47:56,984 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:47:56,986 ERROR Ошибка при выполнении задания test.json: bytes expected, got <class 'NoneType'> instead
+2025-07-16 13:52:57,021 INFO Начало обработки задания: test.json
+2025-07-16 13:52:57,128 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:52:57,128 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:52:57,131 ERROR Ошибка при выполнении задания test.json: bytes expected, got <class 'NoneType'> instead
+2025-07-16 13:57:57,147 INFO Начало обработки задания: test.json
+2025-07-16 13:57:57,191 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 13:57:57,192 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 13:57:57,192 ERROR Ошибка при выполнении задания test.json: bytes expected, got <class 'NoneType'> instead
+2025-07-16 14:01:04,107 INFO Запуск цикла ETL
+2025-07-16 14:01:04,108 INFO Начало обработки задания: test.json
+2025-07-16 14:01:04,163 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:01:04,163 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:01:04,164 ERROR Ошибка при выполнении задания test.json: name 'placeholders' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 107, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 50, in create_delete_query
+    placeholders=sql.SQL(', ').join(placeholders),
+                                    ^^^^^^^^^^^^
+NameError: name 'placeholders' is not defined
+2025-07-16 14:01:40,908 INFO Начало обработки задания: test.json
+2025-07-16 14:01:40,945 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:01:40,945 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:01:40,946 ERROR Ошибка при выполнении задания test.json: bytes expected, got <class 'NoneType'> instead
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 109, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 333, in wait_poll
+    s = next(gen)
+        ^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 195, in _execute_gen
+    yield from self._maybe_prepare_gen(pgq, prepare=prepare, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 275, in _maybe_prepare_gen
+    self._execute_send(pgq, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 447, in _execute_send
+    self._pgconn.send_query(query.query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/pq/pq_ctypes.py", line 285, in send_query
+    raise TypeError(f"bytes expected, got {type(command)} instead")
+TypeError: bytes expected, got <class 'NoneType'> instead
+2025-07-16 14:02:38,203 INFO Начало обработки задания: test.json
+2025-07-16 14:02:38,251 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:02:38,251 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:02:38,251 ERROR Ошибка при выполнении задания test.json: bytes expected, got <class 'NoneType'> instead
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 111, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 333, in wait_poll
+    s = next(gen)
+        ^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 195, in _execute_gen
+    yield from self._maybe_prepare_gen(pgq, prepare=prepare, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 275, in _maybe_prepare_gen
+    self._execute_send(pgq, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 447, in _execute_send
+    self._pgconn.send_query(query.query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/pq/pq_ctypes.py", line 285, in send_query
+    raise TypeError(f"bytes expected, got {type(command)} instead")
+TypeError: bytes expected, got <class 'NoneType'> instead
+2025-07-16 14:03:26,587 INFO Начало обработки задания: test.json
+2025-07-16 14:03:26,627 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:03:26,627 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:03:26,628 ERROR Ошибка при выполнении задания test.json: bytes expected, got <class 'NoneType'> instead
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 111, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 333, in wait_poll
+    s = next(gen)
+        ^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 195, in _execute_gen
+    yield from self._maybe_prepare_gen(pgq, prepare=prepare, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 275, in _maybe_prepare_gen
+    self._execute_send(pgq, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 447, in _execute_send
+    self._pgconn.send_query(query.query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/pq/pq_ctypes.py", line 285, in send_query
+    raise TypeError(f"bytes expected, got {type(command)} instead")
+TypeError: bytes expected, got <class 'NoneType'> instead
+2025-07-16 14:06:09,182 INFO Начало обработки задания: test.json
+2025-07-16 14:06:09,221 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:06:09,222 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:06:09,222 ERROR Ошибка при выполнении задания test.json: bytes expected, got <class 'NoneType'> instead
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 333, in wait_poll
+    s = next(gen)
+        ^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 195, in _execute_gen
+    yield from self._maybe_prepare_gen(pgq, prepare=prepare, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 275, in _maybe_prepare_gen
+    self._execute_send(pgq, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 447, in _execute_send
+    self._pgconn.send_query(query.query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/pq/pq_ctypes.py", line 285, in send_query
+    raise TypeError(f"bytes expected, got {type(command)} instead")
+TypeError: bytes expected, got <class 'NoneType'> instead
+2025-07-16 14:08:02,909 INFO Начало обработки задания: test.json
+2025-07-16 14:08:02,944 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:08:02,945 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:08:02,945 ERROR Ошибка при выполнении задания test.json: the query has 2 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 2 placeholders but 4 parameters were passed
+2025-07-16 14:09:20,464 INFO Начало обработки задания: test.json
+2025-07-16 14:09:20,525 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:09:20,525 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:09:20,526 ERROR Ошибка при выполнении задания test.json: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 111, in process_job
+    analytic_cursor.execute(*delete_query)
+TypeError: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+2025-07-16 14:09:59,969 INFO Начало обработки задания: test.json
+2025-07-16 14:10:00,009 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:10:00,009 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:10:00,010 ERROR Ошибка при выполнении задания test.json: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    analytic_cursor.execute(*delete_query)
+TypeError: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+2025-07-16 14:11:22,048 INFO Начало обработки задания: test.json
+2025-07-16 14:11:22,090 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:11:22,090 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:11:22,091 ERROR Ошибка при выполнении задания test.json: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 114, in process_job
+    analytic_cursor.execute(*delete_query)
+TypeError: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+2025-07-16 14:12:33,842 INFO Начало обработки задания: test.json
+2025-07-16 14:12:33,878 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:12:33,879 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:12:33,879 ERROR Ошибка при выполнении задания test.json: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 111, in process_job
+    analytic_cursor.execute(*delete_query)
+TypeError: psycopg.cursor.Cursor.execute() argument after * must be an iterable, not NoneType
+2025-07-16 14:13:25,532 INFO Начало обработки задания: test.json
+2025-07-16 14:13:25,571 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:13:25,571 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:13:25,571 ERROR Ошибка при выполнении задания test.json: the query has 8 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 8 placeholders but 4 parameters were passed
+2025-07-16 14:14:46,041 INFO Начало обработки задания: test.json
+2025-07-16 14:14:46,076 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:14:46,077 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:14:46,077 ERROR Ошибка при выполнении задания test.json: cannot adapt type 'generator' using placeholder '%t' (format: TEXT)
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: cannot adapt type 'generator' using placeholder '%t' (format: TEXT)
+2025-07-16 14:15:19,418 INFO Начало обработки задания: test.json
+2025-07-16 14:15:19,456 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:15:19,457 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:15:19,457 ERROR Ошибка при выполнении задания test.json: the query has 8 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 8 placeholders but 4 parameters were passed
+2025-07-16 14:15:30,705 INFO Начало обработки задания: test.json
+2025-07-16 14:15:30,747 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:15:30,747 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:15:30,747 ERROR Ошибка при выполнении задания test.json: the query has 2 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 2 placeholders but 4 parameters were passed
+2025-07-16 14:15:55,905 INFO Начало обработки задания: test.json
+2025-07-16 14:15:55,942 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:15:55,942 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:15:55,942 ERROR Ошибка при выполнении задания test.json: the query has 16 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 16 placeholders but 4 parameters were passed
+2025-07-16 14:16:08,315 INFO Начало обработки задания: test.json
+2025-07-16 14:16:08,350 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:16:08,350 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:16:08,350 ERROR Ошибка при выполнении задания test.json: the query has 8 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 8 placeholders but 4 parameters were passed
+2025-07-16 14:16:15,702 INFO Начало обработки задания: test.json
+2025-07-16 14:16:15,740 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:16:15,741 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:16:15,741 ERROR Ошибка при выполнении задания test.json: the query has 2 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 2 placeholders but 4 parameters were passed
+2025-07-16 14:20:47,817 INFO Начало обработки задания: test.json
+2025-07-16 14:20:47,919 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:20:47,919 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:20:47,921 ERROR Ошибка при выполнении задания test.json: the query has 2 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 113, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 2 placeholders but 4 parameters were passed
+2025-07-16 14:20:57,788 INFO Начало обработки задания: test.json
+2025-07-16 14:20:57,818 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:20:57,818 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:20:57,819 ERROR Ошибка при выполнении задания test.json: the query has 2 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 113, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 2 placeholders but 4 parameters were passed
+2025-07-16 14:22:19,191 INFO Начало обработки задания: test.json
+2025-07-16 14:22:19,246 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:22:19,246 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:22:19,247 ERROR Ошибка при выполнении задания test.json: the query has 8 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 8 placeholders but 4 parameters were passed
+2025-07-16 14:22:46,207 INFO Начало обработки задания: test.json
+2025-07-16 14:22:46,243 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:22:46,243 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:22:46,244 ERROR Ошибка при выполнении задания test.json: the query has 2 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 2 placeholders but 4 parameters were passed
+2025-07-16 14:24:21,605 INFO Начало обработки задания: test.json
+2025-07-16 14:24:21,649 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:24:21,649 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:24:21,650 ERROR Ошибка при выполнении задания test.json: sequence item 0: expected str instance, tuple found
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 109, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 46, in create_delete_query
+    placeholders_count = (', ').join(values)
+                         ^^^^^^^^^^^^^^^^^^^
+TypeError: sequence item 0: expected str instance, tuple found
+2025-07-16 14:24:43,950 INFO Начало обработки задания: test.json
+2025-07-16 14:24:43,991 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:24:43,991 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:24:43,992 ERROR Ошибка при выполнении задания test.json: the query has 0 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 0 placeholders but 4 parameters were passed
+2025-07-16 14:25:04,544 INFO Начало обработки задания: test.json
+2025-07-16 14:25:04,583 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:25:04,583 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:25:04,584 ERROR Ошибка при выполнении задания test.json: sequence item 0: expected str instance, tuple found
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 109, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 46, in create_delete_query
+    placeholders_count = (', ').join(values)
+                         ^^^^^^^^^^^^^^^^^^^
+TypeError: sequence item 0: expected str instance, tuple found
+2025-07-16 14:25:53,987 INFO Начало обработки задания: test.json
+2025-07-16 14:25:54,040 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:25:54,040 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:25:54,040 ERROR Ошибка при выполнении задания test.json: sequence item 0: expected str instance, int found
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 109, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 46, in create_delete_query
+    placeholders_count = (', ').join(values)
+                         ^^^^^^^^^^^^^^^^^^^
+TypeError: sequence item 0: expected str instance, int found
+2025-07-16 14:26:00,126 INFO Начало обработки задания: test.json
+2025-07-16 14:26:00,160 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:26:00,160 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:26:00,161 ERROR Ошибка при выполнении задания test.json: name 'placeholders_count' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 108, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 51, in create_delete_query
+    placeholders=sql.SQL(", ").join(placeholders_count),
+                                    ^^^^^^^^^^^^^^^^^^
+NameError: name 'placeholders_count' is not defined
+2025-07-16 14:26:20,190 INFO Начало обработки задания: test.json
+2025-07-16 14:26:20,227 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:26:20,228 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:26:20,228 ERROR Ошибка при выполнении задания test.json: name 'placeholders_count' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 108, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 51, in create_delete_query
+    placeholders=sql.SQL(", ").join(placeholders_count),
+                                    ^^^^^^^^^^^^^^^^^^
+NameError: name 'placeholders_count' is not defined
+2025-07-16 14:28:04,101 INFO Начало обработки задания: test.json
+2025-07-16 14:28:04,142 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:28:04,142 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:28:04,142 ERROR Ошибка при выполнении задания test.json: name 'placeholders_count' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 55, in create_delete_query
+    placeholders=sql.SQL(", ").join(placeholders_count),
+                                    ^^^^^^^^^^^^^^^^^^
+NameError: name 'placeholders_count' is not defined
+2025-07-16 14:28:32,951 INFO Начало обработки задания: test.json
+2025-07-16 14:28:33,003 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:28:33,003 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:28:33,004 ERROR Ошибка при выполнении задания test.json: name 'placeholders_count' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 55, in create_delete_query
+    placeholders=sql.SQL(", ").join(placeholders_count),
+                                    ^^^^^^^^^^^^^^^^^^
+NameError: name 'placeholders_count' is not defined
+2025-07-16 14:29:18,260 INFO Начало обработки задания: test.json
+2025-07-16 14:29:18,300 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:29:18,300 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:29:18,300 ERROR Ошибка при выполнении задания test.json: name 'placeholders_count' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 55, in create_delete_query
+    placeholders=sql.SQL(", ").join(placeholders_count),
+                                    ^^^^^^^^^^^^^^^^^^
+NameError: name 'placeholders_count' is not defined
+2025-07-16 14:33:10,851 INFO Начало обработки задания: test.json
+2025-07-16 14:33:10,947 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:33:10,948 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:33:10,948 ERROR Ошибка при выполнении задания test.json: name 'placeholders_count' is not defined
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 109, in process_job
+    delete_query = create_delete_query(key_columns, values_in_main_db, target_table)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 52, in create_delete_query
+    placeholders=sql.SQL(", ").join(placeholders_count),
+                                    ^^^^^^^^^^^^^^^^^^
+NameError: name 'placeholders_count' is not defined
+2025-07-16 14:36:23,272 INFO Начало обработки задания: test.json
+2025-07-16 14:36:23,314 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:36:23,315 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:36:23,315 ERROR Ошибка при выполнении задания test.json: the query has 0 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 0 placeholders but 4 parameters were passed
+2025-07-16 14:39:00,519 INFO Начало обработки задания: test.json
+2025-07-16 14:39:00,555 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:39:00,555 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:39:00,556 ERROR Ошибка при выполнении задания test.json: the query has 0 placeholders but 4 parameters were passed
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 109, in process_job
+    analytic_cursor.execute(*delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: the query has 0 placeholders but 4 parameters were passed
+2025-07-16 14:39:30,094 INFO Начало обработки задания: test.json
+2025-07-16 14:39:30,133 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:39:30,133 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:39:30,134 ERROR Ошибка при выполнении задания test.json: unhashable type: 'Composed'
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 93, in execute
+    self._conn.wait(
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/connection.py", line 414, in wait
+    return waiting.wait(gen, self.pgconn.socket, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/waiting.py", line 333, in wait_poll
+    s = next(gen)
+        ^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 195, in _execute_gen
+    yield from self._maybe_prepare_gen(pgq, prepare=prepare, binary=binary)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 272, in _maybe_prepare_gen
+    prep, name = self._get_prepared(pgq, prepare)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_cursor_base.py", line 311, in _get_prepared
+    return self._conn._prepared.get(pgq, prepare)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/_preparing.py", line 67, in get
+    if name := self._names.get(key := self.key(query)):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'Composed'
+2025-07-16 14:40:18,474 INFO Начало обработки задания: test.json
+2025-07-16 14:40:18,517 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:40:18,517 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:40:18,522 ERROR Ошибка при выполнении задания test.json: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3, ''Игор...
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 110, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.FeatureNotSupported: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3, ''Игор...
+                                                           ^
+2025-07-16 14:40:55,650 INFO Начало обработки задания: test.json
+2025-07-16 14:40:55,779 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:40:55,779 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:40:55,782 ERROR Ошибка при выполнении задания test.json: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3, ''Игор...
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 111, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.FeatureNotSupported: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3, ''Игор...
+                                                           ^
+2025-07-16 14:41:13,396 INFO Начало обработки задания: test.json
+2025-07-16 14:41:13,436 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:41:13,437 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:41:13,437 ERROR Ошибка при выполнении задания test.json: cannot adapt type 'set' using placeholder '%t' (format: TEXT)
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 111, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.ProgrammingError: cannot adapt type 'set' using placeholder '%t' (format: TEXT)
+2025-07-16 14:41:43,846 INFO Начало обработки задания: test.json
+2025-07-16 14:41:43,886 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:41:43,887 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:41:43,888 ERROR Ошибка при выполнении задания test.json: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 111, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.FeatureNotSupported: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+2025-07-16 14:44:39,243 INFO Начало обработки задания: test.json
+2025-07-16 14:44:39,330 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:44:39,330 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:44:39,332 ERROR Ошибка при выполнении задания test.json: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.FeatureNotSupported: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+2025-07-16 14:50:07,038 INFO Начало обработки задания: test.json
+2025-07-16 14:50:07,184 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:50:07,185 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:50:07,189 ERROR Ошибка при выполнении задания test.json: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.FeatureNotSupported: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+2025-07-16 14:52:14,493 INFO Начало обработки задания: test.json
+2025-07-16 14:52:14,590 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:52:14,591 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:52:14,594 ERROR Ошибка при выполнении задания test.json: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.FeatureNotSupported: input of anonymous composite types is not implemented
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ('(3,Игорь)'...
+                                                           ^
+2025-07-16 14:54:24,093 INFO Начало обработки задания: test.json
+2025-07-16 14:54:24,128 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:54:24,128 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:54:24,132 INFO Удалено 0 записей из таблицы users
+2025-07-16 14:54:24,132 INFO Задание test.json выполнено успешно
+2025-07-16 14:59:28,678 INFO Начало обработки задания: test.json
+2025-07-16 14:59:28,725 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 14:59:28,725 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 14:59:28,730 INFO Удалено 0 записей из таблицы users
+2025-07-16 14:59:28,730 INFO Задание test.json выполнено успешно
+2025-07-16 15:01:04,611 INFO Начало обработки задания: test.json
+2025-07-16 15:01:04,743 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:01:04,744 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:01:04,749 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:01:04,751 INFO Задание test.json выполнено успешно
+2025-07-16 15:01:36,512 INFO Начало обработки задания: test.json
+2025-07-16 15:01:36,570 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:01:36,571 INFO Вставлено/обновлено 4 записей в таблицу users
+2025-07-16 15:01:36,573 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:01:36,573 INFO Задание test.json выполнено успешно
+2025-07-16 15:03:13,190 INFO Начало обработки задания: test.json
+2025-07-16 15:03:13,224 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:03:13,225 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:03:13,227 INFO Удалено 1 записей из таблицы users
+2025-07-16 15:03:13,228 INFO Задание test.json выполнено успешно
+2025-07-16 15:03:32,464 INFO Начало обработки задания: test.json
+2025-07-16 15:03:32,502 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:03:32,502 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:03:32,506 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:03:32,507 INFO Задание test.json выполнено успешно
+2025-07-16 15:04:42,777 INFO Начало обработки задания: test.json
+2025-07-16 15:04:42,817 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:04:42,817 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:04:42,819 ERROR Ошибка при выполнении задания test.json: syntax error at or near ")"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ()
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 112, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near ")"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ()
+                                                           ^
+2025-07-16 15:11:03,603 INFO Начало обработки задания: test.json
+2025-07-16 15:11:03,709 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:11:03,710 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:11:03,713 ERROR Ошибка при выполнении задания test.json: syntax error at or near ")"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ()
+                                                           ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 116, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near ")"
+СТРОКА 1: DELETE FROM "users" WHERE ("id", "name") NOT IN ()
+                                                           ^
+2025-07-16 15:11:51,535 INFO Начало обработки задания: test.json
+2025-07-16 15:11:51,585 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:11:51,585 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:11:51,587 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:11:51,588 INFO Задание test.json выполнено успешно
+2025-07-16 15:15:18,377 INFO Начало обработки задания: test.json
+2025-07-16 15:15:18,531 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:15:18,532 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:15:18,536 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:15:18,538 INFO Задание test.json выполнено успешно
+2025-07-16 15:17:09,673 INFO Начало обработки задания: test.json
+2025-07-16 15:17:09,745 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:17:09,748 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 15:17:09,750 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:17:09,751 INFO Задание test.json выполнено успешно
+2025-07-16 15:17:42,813 INFO Начало обработки задания: test.json
+2025-07-16 15:17:42,870 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:17:42,870 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:17:42,873 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:17:42,873 INFO Задание test.json выполнено успешно
+2025-07-16 15:18:12,386 INFO Начало обработки задания: test.json
+2025-07-16 15:18:12,419 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:18:12,419 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:18:12,421 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:18:12,422 INFO Задание test.json выполнено успешно
+2025-07-16 15:19:31,318 INFO Начало обработки задания: test.json
+2025-07-16 15:19:31,361 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:19:31,362 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:19:31,364 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:19:31,366 INFO Задание test.json выполнено успешно
+2025-07-16 15:20:10,752 INFO Начало обработки задания: test.json
+2025-07-16 15:20:10,797 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:20:10,799 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 15:20:10,801 INFO Удалено 1 записей из таблицы users
+2025-07-16 15:20:10,802 INFO Задание test.json выполнено успешно
+2025-07-16 15:24:31,921 INFO Запуск цикла ETL
+2025-07-16 15:24:31,921 INFO Начало обработки задания: test.json
+2025-07-16 15:24:32,049 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:24:32,051 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-16 15:24:32,057 ERROR Ошибка при выполнении задания test.json: operator does not exist: character varying <> integer
+СТРОКА 1: DELETE FROM "users" WHERE ("name", "email") NOT IN ((1, 'Ант...
+                                                      ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 117, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: character varying <> integer
+СТРОКА 1: DELETE FROM "users" WHERE ("name", "email") NOT IN ((1, 'Ант...
+                                                      ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2025-07-16 15:24:53,862 INFO Начало обработки задания: test.json
+2025-07-16 15:24:53,897 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:24:53,899 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-16 15:24:53,900 ERROR Ошибка при выполнении задания test.json: operator does not exist: character varying <> integer
+СТРОКА 1: DELETE FROM "users" WHERE ("name", "email") NOT IN ((1, 'Ант...
+                                                      ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 117, in process_job
+    analytic_cursor.execute(delete_query)
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedFunction: operator does not exist: character varying <> integer
+СТРОКА 1: DELETE FROM "users" WHERE ("name", "email") NOT IN ((1, 'Ант...
+                                                      ^
+ПОДСКАЗКА:  No operator matches the given name and argument types. You might need to add explicit type casts.
+2025-07-16 15:27:34,533 INFO Начало обработки задания: test.json
+2025-07-16 15:27:34,575 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:27:34,577 INFO Вставлено/обновлено 3 записей в таблицу users
+2025-07-16 15:27:34,578 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:27:34,579 INFO Задание test.json выполнено успешно
+2025-07-16 15:28:00,626 INFO Начало обработки задания: test.json
+2025-07-16 15:28:00,661 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:28:00,661 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:28:00,663 INFO Удалено 1 записей из таблицы users
+2025-07-16 15:28:00,664 INFO Задание test.json выполнено успешно
+2025-07-16 15:29:32,066 INFO Начало обработки задания: test.json
+2025-07-16 15:29:32,101 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:29:32,101 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:29:32,105 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:29:32,106 INFO Задание test.json выполнено успешно
+2025-07-16 15:29:32,106 INFO Начало обработки задания: test2.json
+2025-07-16 15:29:32,120 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:29:32,120 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:29:32,122 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:29:32,122 INFO Задание test2.json выполнено успешно
+2025-07-16 15:33:18,852 INFO Начало обработки задания: test.json
+2025-07-16 15:33:19,035 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:33:19,035 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:33:19,038 INFO Удалено 1 записей из таблицы users
+2025-07-16 15:33:19,038 INFO Задание test.json выполнено успешно
+2025-07-16 15:33:19,039 INFO Начало обработки задания: test2.json
+2025-07-16 15:33:19,126 ERROR relation "source_products" does not exist
+СТРОКА 1: ...rice, category, stock_quantity, last_updated FROM source_pro...
+                                                               ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 34, in extract_data
+    main_cursor.execute(query, [date])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedTable: relation "source_products" does not exist
+СТРОКА 1: ...rice, category, stock_quantity, last_updated FROM source_pro...
+                                                               ^
+2025-07-16 15:33:19,127 ERROR Ошибка при выполнении задания test2.json: 
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 34, in extract_data
+    main_cursor.execute(query, [date])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedTable: relation "source_products" does not exist
+СТРОКА 1: ...rice, category, stock_quantity, last_updated FROM source_pro...
+                                                               ^
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 108, in process_job
+    for rows_tuple in rows:
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 37, in extract_data
+    raise OperationalError
+psycopg.OperationalError
+2025-07-16 15:34:32,135 INFO Начало обработки задания: test.json
+2025-07-16 15:34:32,187 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:34:32,188 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:34:32,190 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:34:32,190 INFO Задание test.json выполнено успешно
+2025-07-16 15:34:32,191 INFO Начало обработки задания: test2.json
+2025-07-16 15:34:32,220 ERROR column "last_updated" does not exist
+СТРОКА 1: ...oduct_id, title, price, category, stock_quantity, last_updat...
+                                                               ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 34, in extract_data
+    main_cursor.execute(query, [date])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "last_updated" does not exist
+СТРОКА 1: ...oduct_id, title, price, category, stock_quantity, last_updat...
+                                                               ^
+2025-07-16 15:34:32,223 ERROR Ошибка при выполнении задания test2.json: 
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 34, in extract_data
+    main_cursor.execute(query, [date])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "last_updated" does not exist
+СТРОКА 1: ...oduct_id, title, price, category, stock_quantity, last_updat...
+                                                               ^
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 108, in process_job
+    for rows_tuple in rows:
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 37, in extract_data
+    raise OperationalError
+psycopg.OperationalError
+2025-07-16 15:34:58,792 INFO Начало обработки задания: test.json
+2025-07-16 15:34:58,828 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:34:58,828 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:34:58,832 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:34:58,832 INFO Задание test.json выполнено успешно
+2025-07-16 15:34:58,832 INFO Начало обработки задания: test2.json
+2025-07-16 15:34:58,854 ERROR column "last_updated" does not exist
+СТРОКА 1: ...oduct_id, title, price, category, stock_quantity, last_updat...
+                                                               ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 34, in extract_data
+    main_cursor.execute(query, [date])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "last_updated" does not exist
+СТРОКА 1: ...oduct_id, title, price, category, stock_quantity, last_updat...
+                                                               ^
+2025-07-16 15:34:58,854 ERROR Ошибка при выполнении задания test2.json: 
+2025-07-16 15:37:16,411 INFO Начало обработки задания: test.json
+2025-07-16 15:37:16,452 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:37:16,454 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:37:16,456 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:37:16,456 INFO Задание test.json выполнено успешно
+2025-07-16 15:37:16,457 INFO Начало обработки задания: test2.json
+2025-07-16 15:37:16,476 ERROR column "last_updated" does not exist
+СТРОКА 1: ...ntity, created_at, updated_at FROM products WHERE last_updat...
+                                                               ^
+Traceback (most recent call last):
+  File "/Users/antongromov/projects/etl/src/etl_service.py", line 34, in extract_data
+    main_cursor.execute(query, [date])
+  File "/Users/antongromov/Library/Caches/pypoetry/virtualenvs/german-etl-VQ2VeTRG-py3.12/lib/python3.12/site-packages/psycopg/cursor.py", line 97, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedColumn: column "last_updated" does not exist
+СТРОКА 1: ...ntity, created_at, updated_at FROM products WHERE last_updat...
+                                                               ^
+2025-07-16 15:37:16,476 ERROR Ошибка при выполнении задания test2.json: 
+2025-07-16 15:38:36,702 INFO Начало обработки задания: test.json
+2025-07-16 15:38:36,744 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:38:36,745 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:38:36,747 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:38:36,747 INFO Задание test.json выполнено успешно
+2025-07-16 15:38:36,748 INFO Начало обработки задания: test2.json
+2025-07-16 15:38:36,765 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:38:36,766 ERROR Ошибка при выполнении задания test2.json: the query has 6 placeholders but 7 parameters were passed
+2025-07-16 15:39:32,240 INFO Начало обработки задания: test.json
+2025-07-16 15:39:32,281 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:39:32,281 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:39:32,284 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:39:32,285 INFO Задание test.json выполнено успешно
+2025-07-16 15:39:32,285 INFO Начало обработки задания: test2.json
+2025-07-16 15:39:32,312 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:39:32,318 INFO Вставлено/обновлено 1 записей в таблицу products
+2025-07-16 15:39:32,320 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:39:32,321 INFO Задание test2.json выполнено успешно
+2025-07-16 15:40:07,833 INFO Начало обработки задания: test.json
+2025-07-16 15:40:07,880 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:40:07,880 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:40:07,882 INFO Удалено 1 записей из таблицы users
+2025-07-16 15:40:07,882 INFO Задание test.json выполнено успешно
+2025-07-16 15:40:07,882 INFO Начало обработки задания: test2.json
+2025-07-16 15:40:07,891 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:40:07,891 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 15:40:07,892 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:40:07,893 INFO Задание test2.json выполнено успешно
+2025-07-16 15:41:32,681 INFO Начало обработки задания: test.json
+2025-07-16 15:41:32,725 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:41:32,727 INFO Вставлено/обновлено 4 записей в таблицу users
+2025-07-16 15:41:32,728 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:41:32,729 INFO Задание test.json выполнено успешно
+2025-07-16 15:41:32,729 INFO Начало обработки задания: test2.json
+2025-07-16 15:41:32,745 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:41:32,747 INFO Вставлено/обновлено 1 записей в таблицу products
+2025-07-16 15:41:32,748 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:41:32,748 INFO Задание test2.json выполнено успешно
+2025-07-16 15:44:32,361 INFO Начало обработки задания: test.json
+2025-07-16 15:44:32,552 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:44:32,554 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:44:32,574 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:44:32,576 INFO Задание test.json выполнено успешно
+2025-07-16 15:44:32,578 INFO Начало обработки задания: test2.json
+2025-07-16 15:44:32,610 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:44:32,610 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 15:44:32,615 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:44:32,616 INFO Задание test2.json выполнено успешно
+2025-07-16 15:45:04,060 INFO Начало обработки задания: test.json
+2025-07-16 15:45:04,119 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:45:04,122 INFO Вставлено/обновлено 4 записей в таблицу users
+2025-07-16 15:45:04,123 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:45:04,124 INFO Задание test.json выполнено успешно
+2025-07-16 15:45:04,124 INFO Начало обработки задания: test2.json
+2025-07-16 15:45:04,143 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:45:04,144 INFO Вставлено/обновлено 1 записей в таблицу products
+2025-07-16 15:45:04,145 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:45:04,146 INFO Задание test2.json выполнено успешно
+2025-07-16 15:48:03,889 INFO Начало обработки задания: test.json
+2025-07-16 15:48:04,030 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:48:04,032 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:48:04,036 INFO Удалено 2 записей из таблицы users
+2025-07-16 15:48:04,037 INFO Задание test.json выполнено успешно
+2025-07-16 15:48:04,037 INFO Начало обработки задания: test2.json
+2025-07-16 15:48:04,053 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:48:04,055 INFO Вставлено/обновлено 4 записей в таблицу products
+2025-07-16 15:48:04,068 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:48:04,069 INFO Задание test2.json выполнено успешно
+2025-07-16 15:49:09,124 INFO Начало обработки задания: test.json
+2025-07-16 15:49:09,161 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:49:09,163 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:49:09,164 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:49:09,165 INFO Задание test.json выполнено успешно
+2025-07-16 15:49:09,165 INFO Начало обработки задания: test2.json
+2025-07-16 15:49:09,177 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:49:09,177 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 15:49:09,179 INFO Удалено 4 записей из таблицы products
+2025-07-16 15:49:09,179 INFO Задание test2.json выполнено успешно
+2025-07-16 15:49:32,628 INFO Начало обработки задания: test.json
+2025-07-16 15:49:32,670 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:49:32,672 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:49:32,675 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:49:32,677 INFO Задание test.json выполнено успешно
+2025-07-16 15:49:32,679 INFO Начало обработки задания: test2.json
+2025-07-16 15:49:32,694 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:49:32,694 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 15:49:32,695 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:49:32,696 INFO Задание test2.json выполнено успешно
+2025-07-16 15:54:32,707 INFO Начало обработки задания: test.json
+2025-07-16 15:54:32,749 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:54:32,751 INFO Вставлено/обновлено 1 записей в таблицу users
+2025-07-16 15:54:32,752 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:54:32,754 INFO Задание test.json выполнено успешно
+2025-07-16 15:54:32,755 INFO Начало обработки задания: test2.json
+2025-07-16 15:54:32,771 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:54:32,771 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 15:54:32,773 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:54:32,773 INFO Задание test2.json выполнено успешно
+2025-07-16 15:59:32,786 INFO Начало обработки задания: test.json
+2025-07-16 15:59:32,854 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:59:32,854 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 15:59:32,860 INFO Удалено 0 записей из таблицы users
+2025-07-16 15:59:32,860 INFO Задание test.json выполнено успешно
+2025-07-16 15:59:32,861 INFO Начало обработки задания: test2.json
+2025-07-16 15:59:32,877 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 15:59:32,878 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 15:59:32,879 INFO Удалено 0 записей из таблицы products
+2025-07-16 15:59:32,879 INFO Задание test2.json выполнено успешно
+2025-07-16 16:04:32,886 INFO Начало обработки задания: test.json
+2025-07-16 16:04:32,950 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:04:32,951 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:04:32,960 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:04:32,961 INFO Задание test.json выполнено успешно
+2025-07-16 16:04:32,961 INFO Начало обработки задания: test2.json
+2025-07-16 16:04:32,974 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:04:32,974 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:04:32,976 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:04:32,976 INFO Задание test2.json выполнено успешно
+2025-07-16 16:08:55,496 INFO Начало обработки задания: test.json
+2025-07-16 16:08:55,602 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:08:55,602 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:08:55,614 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:08:55,615 INFO Задание test.json выполнено успешно
+2025-07-16 16:08:55,615 INFO Начало обработки задания: test2.json
+2025-07-16 16:08:55,628 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:08:55,628 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:08:55,630 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:08:55,630 INFO Задание test2.json выполнено успешно
+2025-07-16 16:09:28,520 INFO Начало обработки задания: test.json
+2025-07-16 16:09:28,557 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:09:28,561 INFO Вставлено/обновлено 2 записей в таблицу users
+2025-07-16 16:09:28,562 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:09:28,564 INFO Задание test.json выполнено успешно
+2025-07-16 16:09:28,564 INFO Начало обработки задания: test2.json
+2025-07-16 16:09:28,577 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:09:28,577 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:09:28,578 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:09:28,578 INFO Задание test2.json выполнено успешно
+2025-07-16 16:09:32,997 INFO Начало обработки задания: test.json
+2025-07-16 16:09:33,049 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:09:33,049 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:09:33,052 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:09:33,052 INFO Задание test.json выполнено успешно
+2025-07-16 16:09:33,053 INFO Начало обработки задания: test2.json
+2025-07-16 16:09:33,066 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:09:33,066 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:09:33,068 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:09:33,069 INFO Задание test2.json выполнено успешно
+2025-07-16 16:14:33,076 INFO Начало обработки задания: test.json
+2025-07-16 16:14:33,112 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:14:33,112 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:14:33,115 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:14:33,115 INFO Задание test.json выполнено успешно
+2025-07-16 16:14:33,115 INFO Начало обработки задания: test2.json
+2025-07-16 16:14:33,128 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:14:33,129 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:14:33,130 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:14:33,131 INFO Задание test2.json выполнено успешно
+2025-07-16 16:14:44,886 INFO Запуск цикла ETL
+2025-07-16 16:14:44,886 INFO Начало обработки задания: test.json
+2025-07-16 16:14:44,927 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:14:44,927 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:14:44,929 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:14:44,929 INFO Задание test.json выполнено успешно
+2025-07-16 16:14:44,929 INFO Начало обработки задания: test2.json
+2025-07-16 16:14:44,941 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:14:44,942 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:14:44,943 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:14:44,943 INFO Задание test2.json выполнено успешно
+2025-07-16 16:15:43,174 INFO Запуск цикла ETL
+2025-07-16 16:15:43,174 INFO Начало обработки задания: test.json
+2025-07-16 16:15:43,223 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:15:43,223 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:15:43,225 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:15:43,225 INFO Задание test.json выполнено успешно
+2025-07-16 16:15:43,225 INFO Начало обработки задания: test2.json
+2025-07-16 16:15:43,237 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:15:43,237 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:15:43,238 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:15:43,238 INFO Задание test2.json выполнено успешно
+2025-07-16 16:15:43,239 INFO Цикл ETL завершен.
+2025-07-16 16:20:43,259 INFO Начало обработки задания: test.json
+2025-07-16 16:20:43,447 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:20:43,448 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:20:43,460 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:20:43,461 INFO Задание test.json выполнено успешно
+2025-07-16 16:20:43,461 INFO Начало обработки задания: test2.json
+2025-07-16 16:20:43,479 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:20:43,480 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:20:43,480 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:20:43,481 INFO Задание test2.json выполнено успешно
+2025-07-16 16:20:43,481 INFO Цикл ETL завершен.
+2025-07-16 16:25:43,500 INFO Начало обработки задания: test.json
+2025-07-16 16:25:43,583 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:25:43,584 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:25:43,593 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:25:43,594 INFO Задание test.json выполнено успешно
+2025-07-16 16:25:43,595 INFO Начало обработки задания: test2.json
+2025-07-16 16:25:43,609 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:25:43,609 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:25:43,612 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:25:43,612 INFO Задание test2.json выполнено успешно
+2025-07-16 16:25:43,613 INFO Цикл ETL завершен.
+2025-07-16 16:30:43,623 INFO Начало обработки задания: test.json
+2025-07-16 16:30:43,766 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:30:43,767 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:30:43,785 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:30:43,785 INFO Задание test.json выполнено успешно
+2025-07-16 16:30:43,786 INFO Начало обработки задания: test2.json
+2025-07-16 16:30:43,801 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:30:43,801 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:30:43,802 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:30:43,803 INFO Задание test2.json выполнено успешно
+2025-07-16 16:30:43,803 INFO Цикл ETL завершен.
+2025-07-16 16:35:43,830 INFO Начало обработки задания: test.json
+2025-07-16 16:35:43,923 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:35:43,924 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:35:43,940 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:35:43,940 INFO Задание test.json выполнено успешно
+2025-07-16 16:35:43,940 INFO Начало обработки задания: test2.json
+2025-07-16 16:35:43,955 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:35:43,956 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:35:43,957 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:35:43,958 INFO Задание test2.json выполнено успешно
+2025-07-16 16:35:43,958 INFO Цикл ETL завершен.
+2025-07-16 16:40:43,969 INFO Начало обработки задания: test.json
+2025-07-16 16:40:44,010 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:40:44,012 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:40:44,015 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:40:44,016 INFO Задание test.json выполнено успешно
+2025-07-16 16:40:44,016 INFO Начало обработки задания: test2.json
+2025-07-16 16:40:44,032 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:40:44,032 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:40:44,034 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:40:44,034 INFO Задание test2.json выполнено успешно
+2025-07-16 16:40:44,034 INFO Цикл ETL завершен.
+2025-07-16 16:45:44,055 INFO Начало обработки задания: test.json
+2025-07-16 16:45:44,116 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:45:44,116 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:45:44,120 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:45:44,121 INFO Задание test.json выполнено успешно
+2025-07-16 16:45:44,121 INFO Начало обработки задания: test2.json
+2025-07-16 16:45:44,135 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:45:44,135 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:45:44,138 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:45:44,139 INFO Задание test2.json выполнено успешно
+2025-07-16 16:45:44,139 INFO Цикл ETL завершен.
+2025-07-16 16:50:44,150 INFO Начало обработки задания: test.json
+2025-07-16 16:50:44,323 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:50:44,323 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:50:44,410 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:50:44,412 INFO Задание test.json выполнено успешно
+2025-07-16 16:50:44,412 INFO Начало обработки задания: test2.json
+2025-07-16 16:50:44,427 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:50:44,428 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:50:44,429 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:50:44,429 INFO Задание test2.json выполнено успешно
+2025-07-16 16:50:44,429 INFO Цикл ETL завершен.
+2025-07-16 16:55:44,452 INFO Начало обработки задания: test.json
+2025-07-16 16:55:44,536 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:55:44,536 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 16:55:44,543 INFO Удалено 0 записей из таблицы users
+2025-07-16 16:55:44,544 INFO Задание test.json выполнено успешно
+2025-07-16 16:55:44,544 INFO Начало обработки задания: test2.json
+2025-07-16 16:55:44,560 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 16:55:44,560 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 16:55:44,562 INFO Удалено 0 записей из таблицы products
+2025-07-16 16:55:44,562 INFO Задание test2.json выполнено успешно
+2025-07-16 16:55:44,562 INFO Цикл ETL завершен.
+2025-07-16 17:00:44,574 INFO Начало обработки задания: test.json
+2025-07-16 17:00:44,627 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 17:00:44,628 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 17:00:44,630 INFO Удалено 0 записей из таблицы users
+2025-07-16 17:00:44,630 INFO Задание test.json выполнено успешно
+2025-07-16 17:00:44,631 INFO Начало обработки задания: test2.json
+2025-07-16 17:00:44,643 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 17:00:44,643 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 17:00:44,645 INFO Удалено 0 записей из таблицы products
+2025-07-16 17:00:44,645 INFO Задание test2.json выполнено успешно
+2025-07-16 17:00:44,645 INFO Цикл ETL завершен.
+2025-07-16 17:05:44,640 INFO Начало обработки задания: test.json
+2025-07-16 17:05:44,701 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 17:05:44,701 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 17:05:44,708 INFO Удалено 0 записей из таблицы users
+2025-07-16 17:05:44,709 INFO Задание test.json выполнено успешно
+2025-07-16 17:05:44,709 INFO Начало обработки задания: test2.json
+2025-07-16 17:05:44,724 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 17:05:44,724 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 17:05:44,725 INFO Удалено 0 записей из таблицы products
+2025-07-16 17:05:44,726 INFO Задание test2.json выполнено успешно
+2025-07-16 17:05:44,726 INFO Цикл ETL завершен.
+2025-07-16 17:10:44,746 INFO Начало обработки задания: test.json
+2025-07-16 17:10:44,820 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 17:10:44,821 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 17:10:44,828 INFO Удалено 0 записей из таблицы users
+2025-07-16 17:10:44,829 INFO Задание test.json выполнено успешно
+2025-07-16 17:10:44,829 INFO Начало обработки задания: test2.json
+2025-07-16 17:10:44,843 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 17:10:44,843 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 17:10:44,845 INFO Удалено 0 записей из таблицы products
+2025-07-16 17:10:44,845 INFO Задание test2.json выполнено успешно
+2025-07-16 17:10:44,845 INFO Цикл ETL завершен.
+2025-07-16 18:28:32,406 INFO Начало обработки задания: test.json
+2025-07-16 18:28:32,474 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-16 18:28:32,475 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-16 18:28:32,482 INFO Удалено 0 записей из таблицы users
+2025-07-16 18:28:32,483 INFO Задание test.json выполнено успешно
+2025-07-16 18:28:32,483 INFO Начало обработки задания: test2.json
+2025-07-16 18:28:32,497 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-16 18:28:32,497 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-16 18:28:32,498 INFO Удалено 0 записей из таблицы products
+2025-07-16 18:28:32,498 INFO Задание test2.json выполнено успешно
+2025-07-16 18:28:32,499 INFO Цикл ETL завершен.
+2025-07-17 05:16:14,185 INFO Начало обработки задания: test.json
+2025-07-17 05:16:14,730 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-17 05:16:14,734 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-17 05:16:14,762 INFO Удалено 0 записей из таблицы users
+2025-07-17 05:16:14,765 INFO Задание test.json выполнено успешно
+2025-07-17 05:16:14,766 INFO Начало обработки задания: test2.json
+2025-07-17 05:16:14,805 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-17 05:16:14,805 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-17 05:16:14,807 INFO Удалено 0 записей из таблицы products
+2025-07-17 05:16:14,807 INFO Задание test2.json выполнено успешно
+2025-07-17 05:16:14,807 INFO Цикл ETL завершен.
+2025-07-17 09:52:17,104 INFO Начало обработки задания: test.json
+2025-07-17 09:52:17,337 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-17 09:52:17,338 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-17 09:52:17,348 INFO Удалено 0 записей из таблицы users
+2025-07-17 09:52:17,351 INFO Задание test.json выполнено успешно
+2025-07-17 09:52:17,354 INFO Начало обработки задания: test2.json
+2025-07-17 09:52:17,404 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-17 09:52:17,405 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-17 09:52:17,406 INFO Удалено 0 записей из таблицы products
+2025-07-17 09:52:17,408 INFO Задание test2.json выполнено успешно
+2025-07-17 09:52:17,409 INFO Цикл ETL завершен.
+2025-07-17 09:57:17,415 INFO Начало обработки задания: test.json
+2025-07-17 09:57:17,497 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-17 09:57:17,497 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-17 09:57:17,503 INFO Удалено 0 записей из таблицы users
+2025-07-17 09:57:17,503 INFO Задание test.json выполнено успешно
+2025-07-17 09:57:17,503 INFO Начало обработки задания: test2.json
+2025-07-17 09:57:17,517 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-17 09:57:17,517 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-17 09:57:17,518 INFO Удалено 0 записей из таблицы products
+2025-07-17 09:57:17,518 INFO Задание test2.json выполнено успешно
+2025-07-17 09:57:17,519 INFO Цикл ETL завершен.
+2025-07-17 10:02:17,530 INFO Начало обработки задания: test.json
+2025-07-17 10:02:17,602 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-17 10:02:17,602 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-17 10:02:17,608 INFO Удалено 0 записей из таблицы users
+2025-07-17 10:02:17,608 INFO Задание test.json выполнено успешно
+2025-07-17 10:02:17,609 INFO Начало обработки задания: test2.json
+2025-07-17 10:02:17,625 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-17 10:02:17,626 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-17 10:02:17,628 INFO Удалено 0 записей из таблицы products
+2025-07-17 10:02:17,629 INFO Задание test2.json выполнено успешно
+2025-07-17 10:02:17,629 INFO Цикл ETL завершен.
+2025-07-17 10:07:17,700 INFO Начало обработки задания: test.json
+2025-07-17 10:07:17,785 INFO Запрос "SELECT id, name, email, created_at, updated_at FROM users WHERE updated_at > %s;" отправлен успешно
+2025-07-17 10:07:17,785 INFO Вставлено/обновлено 0 записей в таблицу users
+2025-07-17 10:07:17,790 INFO Удалено 0 записей из таблицы users
+2025-07-17 10:07:17,790 INFO Задание test.json выполнено успешно
+2025-07-17 10:07:17,790 INFO Начало обработки задания: test2.json
+2025-07-17 10:07:17,806 INFO Запрос "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;" отправлен успешно
+2025-07-17 10:07:17,806 INFO Вставлено/обновлено 0 записей в таблицу products
+2025-07-17 10:07:17,808 INFO Удалено 0 записей из таблицы products
+2025-07-17 10:07:17,809 INFO Задание test2.json выполнено успешно
+2025-07-17 10:07:17,809 INFO Цикл ETL завершен.

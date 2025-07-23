@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "german-etl"
+name = "etl-service"
 version = "0.1.0"
 description = ""
-authors = ["Pavel Glavan <pglavan1998@mail.ru>"]
+authors = ["Anton Gromov <GromovAS121@yandex.ru>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]

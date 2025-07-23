@@ -1,0 +1,8 @@
+{
+  "CREATE_TABLE_SQL": "CREATE TABLE IF NOT EXISTS products (product_id INT PRIMARY KEY, title VARCHAR NOT NULL, price DECIMAL(10,2), category VARCHAR, stock_quantity INT, created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP);",
+  "SELECT_SOURCE_SQL": "SELECT product_id, title, price, category, stock_quantity, created_at, updated_at FROM products WHERE updated_at > %s;",
+  "UPSERT_TARGET_SQL": "INSERT INTO products (product_id, title, price, category, stock_quantity, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s) ON CONFLICT (product_id) DO UPDATE SET title = EXCLUDED.title, price = EXCLUDED.price, category = EXCLUDED.category, stock_quantity = EXCLUDED.stock_quantity, created_at = EXCLUDED.created_at, updated_at = EXCLUDED.updated_at;",
+  "SELECT_KEYS_SQL": "SELECT title, category FROM products;",
+  "TARGET_TABLE": "products",
+  "KEY_COLUMNS": ["title", "category"]
+  }
